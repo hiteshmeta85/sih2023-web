@@ -25,7 +25,11 @@ export default function UpdateAvatar() {
             quis elit vel urna cursus suscipit et ac risus. Phasellus viverra
             lorem non sem consectetur rhoncus. Sed nec semper nibh.
           </p>
-          <Button type="button" variant="outline" onClick={() => router.back()}>
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => router.push("/video-generation/generate-avatar")}
+          >
             <>
               Regenerate
               <MagicWandIcon className="ml-2" />
