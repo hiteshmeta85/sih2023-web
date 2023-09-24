@@ -2,7 +2,7 @@ import { DURATION_OPTIONS } from "@/constants";
 
 export default function SelectDuration() {
   return (
-    <div className="container flex min-h-screen flex-col items-center justify-center p-4">
+    <div className="container flex min-h-screen max-w-screen-md flex-col items-center justify-center p-4">
       <div>
         <div className="space-y-4">
           <div className="flex items-center gap-2">
@@ -20,14 +20,14 @@ export default function SelectDuration() {
           </p>
         </div>
 
-        <div className="mt-10 grid grid-cols-2 border">
+        <div className="mt-10 grid grid-cols-2 gap-4">
           {DURATION_OPTIONS.map((duration) => (
             <div
               key={duration.value}
               onClick={() => {
                 console.log(duration.value);
               }}
-              className="relative flex transform cursor-pointer flex-col items-center justify-center space-y-2 border p-10 transition-all duration-300 hover:bg-primary-foreground"
+              className="relative flex transform cursor-pointer flex-col items-center justify-center space-y-2 rounded-xl border-2 p-10 transition-all duration-300 hover:bg-primary-foreground"
             >
               {duration.label}
             </div>
