@@ -13,7 +13,7 @@ export default function EditScript() {
               Edit Script
             </h2>
           </div>
-          <p className="max-w-screen-md text-sm tracking-wide text-muted-foreground">
+          <p className="text-sm tracking-wide text-muted-foreground">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
             quis elit vel urna cursus suscipit et ac risus. Phasellus viverra
             lorem non sem consectetur rhoncus. Sed nec semper nibh.
