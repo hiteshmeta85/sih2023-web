@@ -53,3 +53,8 @@ export const AVATAR_OPTIONS = [
     created_at: "2023-09-26T18:15:55.987654Z",
   },
 ];
+
+export const GENDER_OPTIONS = [
+  { label: "Male", value: "male" },
+  { label: "Female", value: "female" },
+];

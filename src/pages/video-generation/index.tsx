@@ -13,7 +13,7 @@ const VideoGeneration = () => {
             Transforming Text into Engaging Visuals
           </h2>
         </div>
-        <PromptInput />
+        <PromptInput placeholder="Paste your press release here." />
       </div>
     </div>
   );

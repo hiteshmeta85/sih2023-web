@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { ArrowLeftIcon, RocketIcon } from "@radix-ui/react-icons";
+import { MagicWandIcon, StarFilledIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
-import { PromptInput } from "@/components/prompt-input";
+import Image from "next/image";
+import { UpdateAvatarForm } from "@/components/update-avatar-form";
+import * as React from "react";
 
-export default function GenerateAvatar() {
+export default function UpdateAvatar() {
   const router = useRouter();
 
   return (
@@ -12,10 +14,10 @@ export default function GenerateAvatar() {
         <div className="space-y-4">
           <div className="flex items-center gap-2">
             <p className="flex h-20 w-20 items-center justify-center rounded-full bg-primary-foreground text-4xl">
-              <RocketIcon className="h-6 w-6" />
+              <StarFilledIcon className="h-6 w-6" />
             </p>
             <h2 className="text-4xl tracking-wider text-violet-500">
-              Generate Avatar
+              Update Avatar
             </h2>
           </div>
           <p className="max-w-screen-md text-sm tracking-wide text-muted-foreground">
@@ -25,14 +27,27 @@ export default function GenerateAvatar() {
           </p>
           <Button type="button" variant="outline" onClick={() => router.back()}>
             <>
-              <ArrowLeftIcon className="mr-2" />
-              Back
+              Regenerate
+              <MagicWandIcon className="ml-2" />
             </>
           </Button>
         </div>
 
         <div className="mt-10">
-          <PromptInput placeholder={"Generate an avatar that looks like ..."} />
+          <div className="flex gap-4">
+            <div className="space-y-2">
+              <Image
+                src="/images/avatar_1.jpeg"
+                alt="John Doe"
+                width={400}
+                height={400}
+                layout={"fixed"}
+                className="h-[400px] w-[400px] min-w-[400px] rounded-xl object-cover"
+              />
+              <p className="text-sm text-primary">AI-Generated Avatar</p>
+            </div>
+            <UpdateAvatarForm />
+          </div>
         </div>
       </div>
     </div>
