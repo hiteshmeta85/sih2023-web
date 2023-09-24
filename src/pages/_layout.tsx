@@ -1,6 +1,7 @@
 import Head from "next/head";
 import React from "react";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
+import { Toaster } from "@/components/ui/toaster";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const meta = {
@@ -15,6 +16,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <meta content={meta.description} name="description" />
       </Head>
       <main>{children}</main>
+      <Toaster />
       <TailwindIndicator />
     </>
   );
