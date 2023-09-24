@@ -24,7 +24,7 @@ export function PromptInput() {
       title: "You submitted the following values:",
       description: (
         <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+          <code className="text-primary">{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
     });
@@ -33,7 +33,7 @@ export function PromptInput() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="mx-auto max-w-screen-md rounded-3xl bg-white/30 p-3">
+        <div className="mx-auto max-w-screen-md rounded-3xl bg-primary/30 p-3">
           <div className="flex items-center gap-2 rounded-2xl bg-primary p-4">
             <div className="inline-flex h-10 items-center justify-center rounded-full bg-violet-500 px-8 text-sm">
               Generate:
