@@ -15,3 +15,8 @@ export const LANGUAGES = [
   { label: "Manipuri", value: "manipuri" },
   { label: "Sanskrit", value: "sanskrit" },
 ];
+
+export const DURATION_OPTIONS = [
+  { label: "30 seconds", value: 30 },
+  { label: "1 minute", value: 60 },
+];
