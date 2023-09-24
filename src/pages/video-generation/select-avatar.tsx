@@ -3,8 +3,10 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Image from "next/image";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
+import { useRouter } from "next/router";
 
 export default function SelectDuration() {
+  const router = useRouter();
   const [currentAvatar, setCurrentAvatar] = useState(AVATAR_OPTIONS[0]);
 
   return (
@@ -24,7 +26,11 @@ export default function SelectDuration() {
             quis elit vel urna cursus suscipit et ac risus. Phasellus viverra
             lorem non sem consectetur rhoncus. Sed nec semper nibh.
           </p>
-          <Button type="button" variant="outline">
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => router.push("/video-generation/generate-avatar")}
+          >
             <>
               Generate Avatar
               <ArrowRightIcon className="ml-2" />

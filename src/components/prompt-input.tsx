@@ -14,7 +14,11 @@ const FormSchema = z.object({
   }),
 });
 
-export function PromptInput() {
+export function PromptInput({
+  placeholder = "Enter a prompt",
+}: {
+  placeholder?: string;
+}) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
@@ -33,7 +37,7 @@ export function PromptInput() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="mx-auto max-w-screen-md rounded-3xl bg-primary/30 p-3">
+        <div className="mx-auto max-w-screen-md transform rounded-3xl bg-primary/30 p-3 transition-all duration-300 focus-within:bg-gradient-to-r focus-within:from-violet-500 focus-within:to-blue-500">
           <div className="flex items-center gap-2 rounded-2xl bg-primary p-4">
             <div className="inline-flex h-10 items-center justify-center rounded-full bg-violet-500 px-8 text-sm">
               Generate:
@@ -45,7 +49,7 @@ export function PromptInput() {
                 <FormItem className="flex-1">
                   <FormControl>
                     <Input
-                      placeholder={"Enter a prompt"}
+                      placeholder={placeholder}
                       className="w-full flex-1 border-none bg-primary text-lg text-background shadow-none focus-visible:ring-0 focus-visible:ring-primary focus-visible:ring-offset-0"
                       autoComplete="off"
                       {...field}
