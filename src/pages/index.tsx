@@ -153,8 +153,8 @@ export default function Home() {
               "/images/avatar_1.jpeg",
               "/images/avatar_3.jpeg",
               "/images/avatar_2.jpeg",
-              "/images/avatar_6.jpg",
-              "/images/avatar_7.jpg",
+              "/images/avatar_4.jpeg",
+              "/images/avatar_5.png",
             ]}
           />
         </div>
