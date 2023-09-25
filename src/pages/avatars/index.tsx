@@ -46,11 +46,15 @@ export default function Avatars({ avatars }: PageIP) {
           </p>
         </div>
         <div className="mt-10">
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-            {avatars.map((avatar) => {
-              return <AvatarCard key={avatar.id} {...avatar} />;
-            })}
-          </div>
+          {avatars && avatars.length > 0 ? (
+            <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+              {avatars.map((avatar) => {
+                return <AvatarCard key={avatar.id} {...avatar} />;
+              })}
+            </div>
+          ) : (
+            <p className="text-muted-foreground">No avatars found</p>
+          )}
         </div>
       </div>
     </>
@@ -63,7 +67,13 @@ export async function getServerSideProps() {
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/avatars`,
     );
     const data = res.data;
-
+    if (!data) {
+      return {
+        props: {
+          avatars: [],
+        },
+      };
+    }
     return {
       props: {
         avatars: data,

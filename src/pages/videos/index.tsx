@@ -2,11 +2,15 @@ import Navbar from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import { MagicWandIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
-import { AVATAR_OPTIONS, VIDEOS_DATA } from "@/constants";
-import AvatarCard from "@/components/avatar-card";
 import VideoCard from "@/components/video-card";
+import axios from "axios";
+import { VideoIP } from "@/types";
 
-export default function Videos() {
+interface PageIP {
+  videos: VideoIP[];
+}
+
+export default function Videos({ videos }: PageIP) {
   const router = useRouter();
 
   return (
@@ -42,13 +46,44 @@ export default function Videos() {
           </p>
         </div>
         <div className="mt-10">
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-            {VIDEOS_DATA.map((video) => {
-              return <VideoCard key={video.id} {...video} />;
-            })}
-          </div>
+          {videos && videos.length > 0 ? (
+            <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+              {videos.map((video) => {
+                return <VideoCard key={video.id} {...video} />;
+              })}
+            </div>
+          ) : (
+            <p className="text-muted-foreground">No videos found</p>
+          )}
         </div>
       </div>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  try {
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/videos`,
+    );
+    const data = res.data;
+    if (!data) {
+      return {
+        props: {
+          videos: [],
+        },
+      };
+    }
+    return {
+      props: {
+        videos: data,
+      },
+    };
+  } catch (err) {
+    return {
+      props: {
+        videos: [],
+      },
+    };
+  }
 }

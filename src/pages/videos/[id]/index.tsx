@@ -1,17 +1,22 @@
-import { useState } from "react";
-import { AVATAR_OPTIONS, VIDEO_DATA } from "@/constants";
+import { AVATAR_OPTIONS } from "@/constants";
 import AvatarCard from "@/components/avatar-card";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/navbar";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
+import axios from "axios";
+import { VideoIP } from "@/types";
+import { GetServerSidePropsContext } from "next";
+import { Fragment } from "react";
 
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
-export default function IndividualVideo() {
-  const router = useRouter();
+interface PageIP {
+  videoData: VideoIP;
+}
 
-  const [videoData, setVideoData] = useState(VIDEO_DATA);
+export default function IndividualVideo({ videoData }: PageIP) {
+  const router = useRouter();
 
   return (
     <>
@@ -71,7 +76,7 @@ export default function IndividualVideo() {
             <div className="grid grid-cols-4 gap-4">
               {videoData.script.script_sections.map((section) => {
                 return (
-                  <>
+                  <Fragment key={section.id}>
                     {section.images.map((image) => {
                       return (
                         <div
@@ -94,7 +99,7 @@ export default function IndividualVideo() {
                         </div>
                       );
                     })}
-                  </>
+                  </Fragment>
                 );
               })}
             </div>
@@ -110,4 +115,29 @@ export default function IndividualVideo() {
       </div>
     </>
   );
+}
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { id } = context.query;
+
+  try {
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/videos/${id}`,
+    );
+    const data = res.data;
+    if (!data) {
+      return {
+        notFound: true,
+      };
+    }
+    return {
+      props: {
+        videoData: data,
+      },
+    };
+  } catch (err) {
+    return {
+      notFound: true,
+    };
+  }
 }

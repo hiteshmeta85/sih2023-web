@@ -1,10 +1,12 @@
 import { VideoIP } from "@/types";
 
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
 export default function VideoCard({
+  id,
   title,
   description,
   link,
@@ -19,7 +21,9 @@ export default function VideoCard({
       </div>
       <div className="space-y-8 p-4">
         <div className="space-y-2">
-          <p className="font-sm font-medium">{title}</p>
+          <Link href={`/videos/${id}`} className="font-medium hover:underline">
+            {title}
+          </Link>
           <p className="text-xs text-muted-foreground">{description}</p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
