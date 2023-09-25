@@ -44,7 +44,8 @@ export default function Home() {
             <div className="text-3xl font-bold md:text-5xl md:leading-[4rem]">
               <p>
                 Transforming Text into Video <br />
-                Unleashing AI Magic on PIB Press Releases!
+                Unleashing <span className="text-yellow-400">AI Magic</span> on
+                PIB Press Releases!
               </p>
             </div>
             <p className="md:text-md mx-auto text-sm text-muted-foreground">
@@ -55,7 +56,7 @@ export default function Home() {
 
           <div className="mx-auto grid grid-cols-3 gap-4 md:grid-cols-6">
             <div className="flex cursor-pointer flex-col items-center gap-3">
-              <VideoIcon className="h-[50px] w-[50px] rounded-full bg-yellow-300 p-2 hover:bg-yellow-500" />
+              <VideoIcon className="h-[50px] w-[50px] rounded-full bg-yellow-400 p-2 hover:bg-yellow-500" />
               <p className="text-sm">Video</p>
             </div>
             <div className="flex cursor-pointer flex-col items-center gap-3">
@@ -101,8 +102,9 @@ export default function Home() {
         <div className="mx-auto grid max-w-screen-md gap-6 py-24 md:grid-cols-2">
           <div>
             <p className="text-left text-3xl font-bold">
-              Our Text-to-video platform automate the process of creating
-              videos, eliminating the need for manual editing and production.
+              Our <span className="text-rose-500">Text-to-Video</span> platform
+              automate the process of creating videos, eliminating the need for
+              manual editing and production.
             </p>
           </div>
           <div className="md:col-start-1 md:row-span-2">
@@ -116,8 +118,9 @@ export default function Home() {
           </div>
           <div>
             <p className="text-left text-3xl font-bold">
-              Our platform support multiple Indian languages and accents,
-              allowing for a global reach and audience targeting.
+              Our platform support multiple{" "}
+              <span className="text-blue-500">Indian languages</span> and
+              accents, allowing for a global reach and audience targeting.
             </p>
           </div>
           <div>
@@ -133,8 +136,9 @@ export default function Home() {
       </div>
 
       <div className="container mx-auto grid space-y-8 pb-24 text-center">
-        <p className="text-2xl font-bold text-yellow-400 md:text-3xl md:leading-[3rem]">
-          Reporting Live from the Wacky World of AI-Generated Avatars!
+        <p className="text-2xl font-bold md:text-3xl md:leading-[3rem]">
+          Reporting Live from the Wacky World of{" "}
+          <span className="text-green-500">AI-Generated Avatars!</span>
         </p>
         <div className="mx-auto max-w-screen-md">
           <AvatarsShowcase
