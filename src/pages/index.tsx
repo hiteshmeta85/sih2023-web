@@ -24,14 +24,14 @@ export default function Home() {
           <Button
             variant="outline"
             type="button"
-            onClick={() => router.push("videos/")}
+            onClick={() => router.push("/videos")}
           >
             Video Showcase
           </Button>
           <Button
             variant="outline"
             type="button"
-            onClick={() => router.push("avatars/")}
+            onClick={() => router.push("/avatars")}
           >
             Avatar Showcase
           </Button>
@@ -50,7 +50,7 @@ export default function Home() {
             </div>
             <p className="md:text-md mx-auto text-sm text-muted-foreground">
               Unlocking Communication Horizons: From Text to Video, PIB Press
-              Releases Speak 14 Languages, Uniting a Nation of Diverse Voices!
+              Releases Speak 15 Languages, Uniting a Nation of Diverse Voices!
             </p>
           </div>
 

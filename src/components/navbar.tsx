@@ -5,7 +5,7 @@ import Link from "next/link";
 const Navbar = ({ children }: { children?: React.ReactNode }) => {
   return (
     <>
-      <nav className="container mx-auto flex flex-wrap items-center justify-between gap-4 py-4">
+      <nav className="container mx-auto flex flex-wrap items-center justify-between gap-4 p-4">
         <Link href={"/"}>
           <Logo />
         </Link>

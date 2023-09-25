@@ -49,7 +49,7 @@ export default function IndividualVideo() {
               <ReactPlayer
                 width="100%"
                 height="100%"
-                url="https://youtu.be/Uzuk4vraXpA?feature=shared"
+                url={videoData.link}
                 controls
               />
             </div>

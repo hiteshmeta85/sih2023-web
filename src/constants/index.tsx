@@ -128,9 +128,162 @@ export const VIDEO_DATA = {
   title: "Transforming Press Releases with AI",
   description: "Experience the future of communication.",
   language: "English",
-  link: "yourwebsite.com/videos/video1",
+  link: "https://youtu.be/Uzuk4vraXpA?feature=shared",
   duration: 60,
   status: "Completed",
   created_at: "2023-09-24T11:19:34.499367Z",
   user: 1,
 };
+
+export const VIDEOS_DATA = [
+  {
+    id: 1,
+    avatar: {
+      id: 1,
+      nickname: "AI_Creator",
+      description: "Your digital companion created with AI magic.",
+      image: "avatar_image.jpg",
+      gender: "Neutral",
+      intro_video: "intro_video.mp4",
+      created_at: "2023-09-24T10:40:35.269627Z",
+    },
+    script: {
+      id: 1,
+      script_sections: [
+        {
+          id: 1,
+          images: [
+            {
+              id: 1,
+              link: "/images/avatar_1.jpeg",
+              source: "Unsplash",
+              source_link: "unsplash.com/link1",
+            },
+            {
+              id: 2,
+              link: "/images/avatar_2.jpeg",
+              source: "Pexels",
+              source_link: "pexels.com/link2",
+            },
+          ],
+          content:
+            "In today's fast-paced world, we understand the need for concise communication.",
+          start_time: "00:00",
+          end_time: "00:10",
+          script: 1,
+        },
+        {
+          id: 2,
+          images: [
+            {
+              id: 3,
+              link: "/images/avatar_3.jpeg",
+              source: "Pixabay",
+              source_link: "pixabay.com/link3",
+            },
+          ],
+          content:
+            "Our AI-driven solution simplifies the conversion of text to video, engaging your audience effortlessly.",
+          start_time: "00:15",
+          end_time: "00:25",
+          script: 1,
+        },
+        {
+          id: 3,
+          images: [],
+          content:
+            "Join us on this journey to redefine communication with the power of AI avatars.",
+          start_time: "00:30",
+          end_time: "00:40",
+          script: 1,
+        },
+      ],
+      content:
+        "Our AI-powered avatars transform text-based Press Releases into engaging videos.",
+      language: "English",
+    },
+    title: "Transforming Press Releases with AI",
+    description: "Experience the future of communication.",
+    language: "English",
+    link: "https://youtu.be/Uzuk4vraXpA?feature=shared",
+    duration: 60,
+    status: "Completed",
+    created_at: "2023-09-24T11:19:34.499367Z",
+    user: 1,
+  },
+  {
+    id: 1,
+    avatar: {
+      id: 1,
+      nickname: "AI_Creator",
+      description: "Your digital companion created with AI magic.",
+      image: "avatar_image.jpg",
+      gender: "Neutral",
+      intro_video: "intro_video.mp4",
+      created_at: "2023-09-24T10:40:35.269627Z",
+    },
+    script: {
+      id: 1,
+      script_sections: [
+        {
+          id: 1,
+          images: [
+            {
+              id: 1,
+              link: "/images/avatar_1.jpeg",
+              source: "Unsplash",
+              source_link: "unsplash.com/link1",
+            },
+            {
+              id: 2,
+              link: "/images/avatar_2.jpeg",
+              source: "Pexels",
+              source_link: "pexels.com/link2",
+            },
+          ],
+          content:
+            "In today's fast-paced world, we understand the need for concise communication.",
+          start_time: "00:00",
+          end_time: "00:10",
+          script: 1,
+        },
+        {
+          id: 2,
+          images: [
+            {
+              id: 3,
+              link: "/images/avatar_3.jpeg",
+              source: "Pixabay",
+              source_link: "pixabay.com/link3",
+            },
+          ],
+          content:
+            "Our AI-driven solution simplifies the conversion of text to video, engaging your audience effortlessly.",
+          start_time: "00:15",
+          end_time: "00:25",
+          script: 1,
+        },
+        {
+          id: 3,
+          images: [],
+          content:
+            "Join us on this journey to redefine communication with the power of AI avatars.",
+          start_time: "00:30",
+          end_time: "00:40",
+          script: 1,
+        },
+      ],
+      content:
+        "Our AI-powered avatars transform text-based Press Releases into engaging videos.",
+      language: "English",
+    },
+    title: "Transforming Press Releases with AI",
+    description: "Experience the future of communication.",
+    language: "English",
+    link: "https://youtu.be/Uzuk4vraXpA?feature=shared",
+    duration: 60,
+    status: "Completed",
+    created_at: "2023-09-24T11:19:34.499367Z",
+    user: 1,
+  },
+];

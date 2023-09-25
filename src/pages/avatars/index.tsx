@@ -3,6 +3,7 @@ import { AVATAR_OPTIONS } from "@/constants";
 import AvatarCard from "@/components/avatar-card";
 import Navbar from "@/components/navbar";
 import { useRouter } from "next/router";
+import { MagicWandIcon } from "@radix-ui/react-icons";
 
 export default function Avatars() {
   const router = useRouter();
@@ -13,6 +14,15 @@ export default function Avatars() {
         <div className="flex items-center gap-4">
           <Button variant="outline" onClick={() => router.push("/")}>
             Home
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() => router.push("/video-generation/generate-avatar")}
+          >
+            <>
+              Generate
+              <MagicWandIcon className="ml-2" />
+            </>
           </Button>
         </div>
       </Navbar>

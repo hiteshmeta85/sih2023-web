@@ -2,6 +2,9 @@ import Navbar from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import { MagicWandIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
+import { AVATAR_OPTIONS, VIDEOS_DATA } from "@/constants";
+import AvatarCard from "@/components/avatar-card";
+import VideoCard from "@/components/video-card";
 
 export default function Videos() {
   const router = useRouter();
@@ -15,7 +18,7 @@ export default function Videos() {
           </Button>
           <Button
             variant="outline"
-            onClick={() => router.push("video-generation/")}
+            onClick={() => router.push("/video-generation")}
           >
             <>
               Generate
@@ -37,6 +40,13 @@ export default function Videos() {
             the future of conveying information. Join us in exploring the
             captivating possibilities of AI-driven video communication.
           </p>
+        </div>
+        <div className="mt-10">
+          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+            {VIDEOS_DATA.map((video) => {
+              return <VideoCard key={video.id} {...video} />;
+            })}
+          </div>
         </div>
       </div>
     </>
