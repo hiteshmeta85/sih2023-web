@@ -3,16 +3,20 @@ import Navbar from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import {
   FileTextIcon,
-  Pencil1Icon,
+  KeyboardIcon,
+  LetterCaseCapitalizeIcon,
   PersonIcon,
+  SpeakerLoudIcon,
   VideoIcon,
 } from "@radix-ui/react-icons";
 import Image from "next/image";
 import React from "react";
 import { PromptInput } from "@/components/prompt-input";
 import AvatarsShowcase from "@/components/avatars-showcase";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <main>
       <Navbar>
@@ -20,58 +24,59 @@ export default function Home() {
           <Button
             variant="outline"
             type="button"
-            onClick={() => console.log("clicked")}
+            onClick={() => router.push("videos/")}
           >
             Video Showcase
           </Button>
           <Button
             variant="outline"
             type="button"
-            onClick={() => console.log("clicked")}
+            onClick={() => router.push("avatars/")}
           >
             Avatar Showcase
           </Button>
         </div>
       </Navbar>
-      <hr />
 
       <div className="container mx-auto text-center">
         <div className="grid space-y-16 py-24">
           <div>
             <div className="text-3xl font-bold md:text-5xl md:leading-[4rem]">
-              <p>Make Great Videos</p>
-              <p>Automate Your Brand</p>
+              <p>
+                Transforming Text into Video <br />
+                Unleashing AI Magic on PIB Press Releases!
+              </p>
             </div>
             <p className="md:text-md mx-auto text-sm text-muted-foreground">
-              Automatically create short, highly-sharable branded videos from
-              your long form content.
+              Unlocking Communication Horizons: From Text to Video, PIB Press
+              Releases Speak 14 Languages, Uniting a Nation of Diverse Voices!
             </p>
           </div>
 
           <div className="mx-auto grid grid-cols-3 gap-4 md:grid-cols-6">
             <div className="flex cursor-pointer flex-col items-center gap-3">
-              <VideoIcon className="h-[50px] w-[50px] rounded-full bg-amber-300 p-2" />
+              <VideoIcon className="h-[50px] w-[50px] rounded-full bg-yellow-300 p-2 hover:bg-yellow-500" />
               <p className="text-sm">Video</p>
             </div>
             <div className="flex cursor-pointer flex-col items-center gap-3">
-              <PersonIcon className="h-[50px] w-[50px] rounded-full bg-blue-400 p-2" />
+              <PersonIcon className="h-[50px] w-[50px] rounded-full bg-blue-400 p-2 hover:bg-blue-500" />
               <p className="text-sm">AI avatar</p>
             </div>
             <div className="flex cursor-pointer flex-col items-center gap-3">
-              <VideoIcon className="h-[50px] w-[50px] rounded-full bg-fuchsia-400 p-2" />
+              <SpeakerLoudIcon className="h-[50px] w-[50px] rounded-full bg-fuchsia-400 p-2 hover:bg-fuchsia-500" />
               <p className="text-sm">AI voice</p>
             </div>
             <div className="flex cursor-pointer flex-col items-center gap-3">
-              <Pencil1Icon className="h-[50px] w-[50px] rounded-full bg-indigo-600 p-2" />
+              <KeyboardIcon className="h-[50px] w-[50px] rounded-full bg-indigo-600 p-2 hover:bg-indigo-700" />
               <p className="text-sm">Text to Video</p>
             </div>
             <div className="flex cursor-pointer flex-col items-center gap-3">
-              <FileTextIcon className="h-[50px] w-[50px] rounded-full bg-purple-500 p-2" />
+              <FileTextIcon className="h-[50px] w-[50px] rounded-full bg-purple-500 p-2 hover:bg-purple-600" />
               <p className="text-sm">AI Templates</p>
             </div>
             <div className="flex cursor-pointer flex-col items-center gap-3">
-              <VideoIcon className="h-[50px] w-[50px] rounded-full bg-orange-400 p-2" />
-              <p className="text-sm">More Videos</p>
+              <LetterCaseCapitalizeIcon className="h-[50px] w-[50px] rounded-full bg-orange-400 p-2 hover:bg-orange-500" />
+              <p className="text-sm">Multilingual</p>
             </div>
           </div>
 
@@ -79,8 +84,9 @@ export default function Home() {
             <Button
               className="w-fit rounded-full bg-violet-500 py-2 hover:bg-violet-600"
               variant="secondary"
+              onClick={() => router.push("video-generation/")}
             >
-              Create a free AI Video
+              Generate AI Video
             </Button>
           </div>
         </div>
@@ -95,8 +101,8 @@ export default function Home() {
         <div className="mx-auto grid max-w-screen-md gap-6 py-24 md:grid-cols-2">
           <div>
             <p className="text-left text-3xl font-bold">
-              Stark.inc is revolutionizing the field of AI image generation with
-              its innovation solutions.
+              Our Text-to-video platform automate the process of creating
+              videos, eliminating the need for manual editing and production.
             </p>
           </div>
           <div className="md:col-start-1 md:row-span-2">
@@ -110,8 +116,8 @@ export default function Home() {
           </div>
           <div>
             <p className="text-left text-3xl font-bold">
-              Stark.inc is revolutionizing the field of AI image generation with
-              its innovation solutions.
+              Our platform support multiple Indian languages and accents,
+              allowing for a global reach and audience targeting.
             </p>
           </div>
           <div>
@@ -128,7 +134,7 @@ export default function Home() {
 
       <div className="container mx-auto grid space-y-8 pb-24 text-center">
         <p className="text-2xl font-bold text-yellow-400 md:text-3xl md:leading-[3rem]">
-          Start your journey Ask the AI to Design
+          Reporting Live from the Wacky World of AI-Generated Avatars!
         </p>
         <div className="mx-auto max-w-screen-md">
           <AvatarsShowcase
