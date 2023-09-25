@@ -35,6 +35,13 @@ export default function Home() {
           >
             Avatar Showcase
           </Button>
+          <Button
+            variant="outline"
+            type="button"
+            onClick={() => router.push("/links")}
+          >
+            All Links
+          </Button>
         </div>
       </Navbar>
 
