@@ -18,31 +18,33 @@ export default function Avatars() {
           identity.
         </p>
       </div>
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-        {AVATAR_OPTIONS.map((avatar) => {
-          return (
-            <div key={avatar.id} className="space-y-4 rounded-2xl border p-4">
-              <Image
-                src={avatar.image}
-                alt={avatar.nickname}
-                width={400}
-                height={400}
-                className="rounded-xl object-cover"
-              />
-              <div className="space-y-4">
-                <div>
-                  <p className="text-2xl font-bold">{avatar.nickname}</p>
-                  <p className="text-sm text-muted-foreground">
-                    {avatar.description}
-                  </p>
+      <div className="mt-10">
+        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+          {AVATAR_OPTIONS.map((avatar) => {
+            return (
+              <div key={avatar.id} className="space-y-4 rounded-2xl border p-4">
+                <Image
+                  src={avatar.image}
+                  alt={avatar.nickname}
+                  width={400}
+                  height={400}
+                  className="rounded-xl object-cover"
+                />
+                <div className="space-y-4">
+                  <div>
+                    <p className="text-2xl font-bold">{avatar.nickname}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {avatar.description}
+                    </p>
+                  </div>
+                  <Button type="button" variant="outline">
+                    <>View Intro Video</>
+                  </Button>
                 </div>
-                <Button type="button" variant="outline">
-                  <>View Intro Video</>
-                </Button>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );
