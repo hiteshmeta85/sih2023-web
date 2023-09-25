@@ -4,7 +4,7 @@ import { AvatarIP } from "@/types";
 
 export default function AvatarCard({ nickname, description, image }: AvatarIP) {
   return (
-    <div className="space-y-4 rounded-2xl border p-4">
+    <div className="flex flex-col items-start space-y-4 rounded-2xl border p-4">
       <Image
         src={image}
         alt={nickname}
@@ -12,7 +12,7 @@ export default function AvatarCard({ nickname, description, image }: AvatarIP) {
         height={400}
         className="rounded-xl object-cover"
       />
-      <div className="space-y-4">
+      <div className="flex flex-1 flex-col items-start justify-between space-y-4">
         <div>
           <p className="text-2xl font-bold">{nickname}</p>
           <p className="text-sm text-muted-foreground">{description}</p>
