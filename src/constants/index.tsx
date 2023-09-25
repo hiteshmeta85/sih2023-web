@@ -78,13 +78,13 @@ export const VIDEO_DATA = {
         images: [
           {
             id: 1,
-            link: "image_link1.jpg",
+            link: "/images/avatar_1.jpeg",
             source: "Unsplash",
             source_link: "unsplash.com/link1",
           },
           {
             id: 2,
-            link: "image_link2.jpg",
+            link: "/images/avatar_2.jpeg",
             source: "Pexels",
             source_link: "pexels.com/link2",
           },
@@ -100,7 +100,7 @@ export const VIDEO_DATA = {
         images: [
           {
             id: 3,
-            link: "image_link3.jpg",
+            link: "/images/avatar_3.jpeg",
             source: "Pixabay",
             source_link: "pixabay.com/link3",
           },
