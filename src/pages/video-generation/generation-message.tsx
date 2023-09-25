@@ -3,6 +3,7 @@ import Image from "next/image";
 import * as React from "react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/router";
+import AvatarsShowcase from "@/components/avatars-showcase";
 
 export default function GenerationMessage() {
   const router = useRouter();
@@ -36,58 +37,15 @@ export default function GenerationMessage() {
               </>
             </Button>
           </div>
-          <div className="grid grid-cols-3 gap-4">
-            <div className="col-span-2">
-              <Image
-                src="/images/avatar_1.jpeg"
-                alt="John Doe"
-                width={400}
-                height={400}
-                layout={"fixed"}
-                className="w-full rounded-xl object-cover"
-              />
-            </div>
-            <div>
-              <Image
-                src="/images/avatar_3.jpeg"
-                alt="John Doe"
-                width={400}
-                height={400}
-                layout={"fixed"}
-                className="w-full rounded-xl object-cover"
-              />
-            </div>
-            <div>
-              <Image
-                src="/images/avatar_2.jpeg"
-                alt="John Doe"
-                width={400}
-                height={400}
-                layout={"fixed"}
-                className="w-full rounded-xl object-cover"
-              />
-            </div>
-            <div>
-              <Image
-                src="/images/avatar_4.jpeg"
-                alt="John Doe"
-                width={400}
-                height={400}
-                layout={"fixed"}
-                className="w-full rounded-xl object-cover"
-              />
-            </div>
-            <div>
-              <Image
-                src="/images/avatar_5.png"
-                alt="John Doe"
-                width={400}
-                height={400}
-                layout={"fixed"}
-                className="w-full rounded-xl object-cover"
-              />
-            </div>
-          </div>
+          <AvatarsShowcase
+            images={[
+              "/images/avatar_1.jpeg",
+              "/images/avatar_3.jpeg",
+              "/images/avatar_2.jpeg",
+              "/images/avatar_4.jpeg",
+              "/images/avatar_5.png",
+            ]}
+          />
         </div>
       </div>
     </div>
