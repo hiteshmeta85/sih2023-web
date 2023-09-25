@@ -7,6 +7,7 @@ export interface AvatarIP {
   intro_video: string;
   created_at: string;
 }
+
 export interface VideoIP {
   id: number;
   avatar: AvatarIP;
@@ -27,6 +28,7 @@ export interface ScriptIP {
   content: string;
   language: string;
 }
+
 export interface ScriptSectionsEntity {
   id: number;
   images: ImagesEntity[];
@@ -35,6 +37,7 @@ export interface ScriptSectionsEntity {
   end_time: string;
   script: number;
 }
+
 export interface ImagesEntity {
   id: number;
   link: string;
