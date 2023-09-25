@@ -287,3 +287,17 @@ export const VIDEOS_DATA = [
     user: 1,
   },
 ];
+
+export const ROUTES = [
+  { label: "Home", path: "/" },
+  { label: "Avatar Showcase", path: "/avatars" },
+  { label: "Video Showcase", path: "/videos" },
+  { label: "Video Generation", path: "/video-generation" },
+  { label: "Select Language", path: "/video-generation/select-language" },
+  { label: "Select Duration", path: "/video-generation/select-duration" },
+  { label: "Select Avatar", path: "/video-generation/select-avatar" },
+  { label: "Generate Avatar", path: "/video-generation/generate-avatar" },
+  { label: "Update Avatar", path: "/video-generation/update-avatar" },
+  { label: "Edit Script", path: "/video-generation/edit-script" },
+  { label: "Generate Message", path: "/video-generation/generation-message" },
+];
