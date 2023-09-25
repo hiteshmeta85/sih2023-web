@@ -13,11 +13,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { toast } from "@/components/ui/use-toast";
 import { Textarea } from "@/components/ui/textarea";
 import { GENDER_OPTIONS } from "@/constants";
 
-const FormSchema = z.object({
+export const UpdateAvatarFormSchema = z.object({
   nickname: z
     .string()
     .nonempty({
@@ -37,21 +36,14 @@ const FormSchema = z.object({
   }),
 });
 
-export function UpdateAvatarForm() {
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+export function UpdateAvatarForm({
+  onSubmit,
+}: {
+  onSubmit: (data: z.infer<typeof UpdateAvatarFormSchema>) => void;
+}) {
+  const form = useForm<z.infer<typeof UpdateAvatarFormSchema>>({
+    resolver: zodResolver(UpdateAvatarFormSchema),
   });
-
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-  }
 
   return (
     <Form {...form}>

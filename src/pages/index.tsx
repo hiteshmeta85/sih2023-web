@@ -11,16 +11,31 @@ import {
 } from "@radix-ui/react-icons";
 import Image from "next/image";
 import React from "react";
-import { PromptInput } from "@/components/prompt-input";
+import { PromptFormSchema, PromptInput } from "@/components/prompt-input";
 import AvatarsShowcase from "@/components/avatars-showcase";
 import { useRouter } from "next/router";
+import * as z from "zod";
 
 export default function Home() {
   const router = useRouter();
+
+  async function onSubmit(data: z.infer<typeof PromptFormSchema>) {
+    localStorage.removeItem("video-creation-data");
+    localStorage.setItem(
+      "video-creation-data",
+      JSON.stringify({
+        prompt: data.prompt,
+        language: null,
+        duration: null,
+      }),
+    );
+    await router.push("/video-generation/select-language");
+  }
+
   return (
     <main>
       <Navbar>
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex flex-wrap items-center gap-4">
           <Button
             variant="outline"
             type="button"
@@ -92,7 +107,7 @@ export default function Home() {
             <Button
               className="w-fit rounded-full bg-violet-500 py-2 hover:bg-violet-600"
               variant="secondary"
-              onClick={() => router.push("video-generation/")}
+              onClick={() => router.push("/video-generation")}
             >
               Generate AI Video
             </Button>
@@ -101,14 +116,17 @@ export default function Home() {
 
         <div className="mx-auto max-w-screen-md space-y-12 rounded-3xl bg-muted p-16">
           <p className="text-2xl font-bold  md:text-3xl md:leading-[3rem]">
-            Start your journey Ask the AI to Design
+            Start your journey! Ask the AI to Design
           </p>
-          <PromptInput />
+          <PromptInput
+            placeholder="Paste your press release here."
+            onSubmit={onSubmit}
+          />
         </div>
 
         <div className="mx-auto grid max-w-screen-md gap-6 py-24 md:grid-cols-2">
           <div>
-            <p className="text-left text-3xl font-bold">
+            <p className="text-left text-2xl font-bold md:text-3xl">
               Our <span className="text-rose-500">Text-to-Video</span> platform
               automate the process of creating videos, eliminating the need for
               manual editing and production.
@@ -124,7 +142,7 @@ export default function Home() {
             />
           </div>
           <div>
-            <p className="text-left text-3xl font-bold">
+            <p className="text-left text-2xl font-bold md:text-3xl">
               Our platform support multiple{" "}
               <span className="text-blue-500">Indian languages</span> and
               accents, allowing for a global reach and audience targeting.

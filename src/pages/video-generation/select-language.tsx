@@ -1,6 +1,20 @@
 import { LANGUAGES } from "@/constants";
+import { useRouter } from "next/router";
 
 export default function SelectLanguage() {
+  const router = useRouter();
+
+  const handleLanguageSelect = async (language: string) => {
+    if (localStorage.getItem("video-creation-data") !== null) {
+      const data = JSON.parse(localStorage.getItem("video-creation-data")!);
+      data.language = language;
+      localStorage.setItem("video-creation-data", JSON.stringify(data));
+      await router.push("/video-generation/select-duration");
+    } else {
+      await router.push("/video-generation");
+    }
+  };
+
   return (
     <div className="container flex min-h-screen max-w-screen-md flex-col items-center justify-center p-4">
       <div>
@@ -24,9 +38,7 @@ export default function SelectLanguage() {
           {LANGUAGES.map((language) => (
             <div
               key={language.value}
-              onClick={() => {
-                console.log(language.value);
-              }}
+              onClick={() => handleLanguageSelect(language.value)}
               className="relative flex transform cursor-pointer flex-col items-center justify-center space-y-2 rounded-xl border-2 p-10 transition-all duration-300 hover:bg-primary-foreground"
             >
               {language.label}

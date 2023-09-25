@@ -1,14 +1,12 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { toast } from "@/components/ui/use-toast";
-import { ArrowRightIcon } from "@radix-ui/react-icons";
+import { ArrowRightIcon, ReloadIcon } from "@radix-ui/react-icons";
 
-const FormSchema = z.object({
+export const PromptFormSchema = z.object({
   prompt: z.string().min(1, {
     message: "Please enter a prompt",
   }),
@@ -16,23 +14,17 @@ const FormSchema = z.object({
 
 export function PromptInput({
   placeholder = "Enter a prompt",
+  onSubmit,
 }: {
   placeholder?: string;
+  onSubmit: (data: z.infer<typeof PromptFormSchema>) => void;
 }) {
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const form = useForm<z.infer<typeof PromptFormSchema>>({
+    resolver: zodResolver(PromptFormSchema),
+    defaultValues: {
+      prompt: "",
+    },
   });
-
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-primary">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-  }
 
   return (
     <Form {...form}>
@@ -63,10 +55,15 @@ export function PromptInput({
               size="lg"
               variant="secondary"
               className="rounded-lg font-normal"
+              disabled={!form.formState.isValid || form.formState.isSubmitting}
             >
               <>
-                Start
-                <ArrowRightIcon className="ml-2" />
+                {form.formState.isSubmitting ? "Generating..." : "Start"}
+                {form.formState.isSubmitting ? (
+                  <ReloadIcon className="ml-2 animate-spin" />
+                ) : (
+                  <ArrowRightIcon className="ml-2" />
+                )}
               </>
             </Button>
           </div>
