@@ -37,12 +37,12 @@ export default function SelectAvatar({ avatars }: PageIP) {
           },
         );
         if (res.data) {
-          await router.push(`/video-generation/update-script/${res.data.id}`);
+          await router.push(`/video-generation/edit-script/${res.data.id}`);
         }
       } catch (err) {
         toast({
           variant: "destructive",
-          title: "Uh oh!, Something went wrong.",
+          title: "Uh oh! Something went wrong.",
           description: "There was a problem with your request.",
         });
       } finally {
@@ -126,6 +126,7 @@ export default function SelectAvatar({ avatars }: PageIP) {
                       <Button
                         type="button"
                         onClick={() => handleAvatarSelect(currentAvatar)}
+                        disabled={isLoading}
                         className="bg-primary-foreground text-xs text-primary ring-1 ring-primary transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
                       >
                         <>

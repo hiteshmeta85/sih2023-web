@@ -10,22 +10,21 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { toast } from "@/components/ui/use-toast";
 import { Textarea } from "@/components/ui/textarea";
 import {
   ArrowRightIcon,
   KeyboardIcon,
-  PlusIcon,
-  TrashIcon,
+  ReloadIcon,
 } from "@radix-ui/react-icons";
 
-const FormSchema = z.object({
-  script: z
+export const EditScriptFormSchema = z.object({
+  script_sections: z
     .array(
       z.object({
-        text: z.string().nonempty({
+        content: z.string().nonempty({
           message: "Text cannot be empty",
         }),
+        id: z.number(),
       }),
     )
     .min(1, {
@@ -33,34 +32,23 @@ const FormSchema = z.object({
     }),
 });
 
-export function EditScriptForm() {
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      script: [
-        {
-          text: "",
-        },
-      ],
-    },
+export function EditScriptForm({
+  onSubmit,
+  defaultValues,
+}: {
+  onSubmit: (data: z.infer<typeof EditScriptFormSchema>) => void;
+  defaultValues: z.infer<typeof EditScriptFormSchema>;
+}) {
+  const form = useForm<z.infer<typeof EditScriptFormSchema>>({
+    resolver: zodResolver(EditScriptFormSchema),
+    defaultValues,
     mode: "onChange",
   });
 
   const { fields, append, remove } = useFieldArray({
     control: form.control,
-    name: "script",
+    name: "script_sections",
   });
-
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-  }
 
   return (
     <Form {...form}>
@@ -74,7 +62,7 @@ export function EditScriptForm() {
               </div>
               <FormField
                 control={form.control}
-                name={`script.${index}.text`}
+                name={`script_sections.${index}.content`}
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
@@ -84,33 +72,6 @@ export function EditScriptForm() {
                   </FormItem>
                 )}
               />
-              <div className="flex justify-end">
-                {index === fields.length - 1 && (
-                  <Button
-                    type="button"
-                    size="sm"
-                    onClick={() =>
-                      append({
-                        text: "",
-                      })
-                    }
-                  >
-                    <PlusIcon className="mr-1 h-4 w-4" />
-                    Add
-                  </Button>
-                )}
-                <div className="w-2" />
-                <Button
-                  type="button"
-                  size="sm"
-                  variant="destructive"
-                  onClick={() => remove(index)}
-                  disabled={fields.length === 1}
-                >
-                  <TrashIcon className="mr-1 h-4 w-4" />
-                  Remove
-                </Button>
-              </div>
             </div>
           ))}
         </div>
@@ -118,8 +79,14 @@ export function EditScriptForm() {
         <div className="flex justify-end">
           <Button type="submit">
             <>
-              Save & Generate Video
-              <ArrowRightIcon className="ml-2" />
+              {form.formState.isSubmitting
+                ? "Generating..."
+                : "Save & Generate Video"}
+              {form.formState.isSubmitting ? (
+                <ReloadIcon className="ml-2 animate-spin" />
+              ) : (
+                <ArrowRightIcon className="ml-2" />
+              )}
             </>
           </Button>
         </div>
