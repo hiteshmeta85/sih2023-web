@@ -105,7 +105,8 @@ export default function Home() {
 
           <div>
             <Button
-              className="w-fit rounded-full bg-violet-500 py-2 hover:bg-violet-600"
+              size="lg"
+              className="w-fit rounded-full bg-violet-500 py-4 text-lg hover:bg-violet-600"
               variant="secondary"
               onClick={() => router.push("/video-generation")}
             >
