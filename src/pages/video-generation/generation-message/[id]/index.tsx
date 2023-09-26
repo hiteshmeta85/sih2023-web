@@ -58,7 +58,8 @@ export default function GenerationMessage() {
         <div className="space-y-4">
           <div className="flex items-center gap-2">
             <h2 className="inline-flex items-end gap-6 text-4xl tracking-wider text-green-500">
-              Video Generation in Progress
+              Video Generation{" "}
+              {videoStatus === "Completed" ? "Completed" : "in Progress"}
               <div className="dot-elastic mb-2" />
             </h2>
           </div>
@@ -70,14 +71,6 @@ export default function GenerationMessage() {
           <div className="flex items-center gap-2">
             {videoStatus != null && (
               <Button type="button">{videoStatus}</Button>
-            )}
-            {(isRefreshing || isLoading) && (
-              <Button type="button">Loading Status...</Button>
-            )}
-            {videoStatus === "Pending" && (
-              <Button type="button" onClick={() => handleRefresh()}>
-                Reload
-              </Button>
             )}
             <Button
               type="button"
@@ -94,6 +87,18 @@ export default function GenerationMessage() {
                 )}
               </>
             </Button>
+            {videoStatus === "Pending" && (
+              <>
+                {(isRefreshing || isLoading) && (
+                  <Button
+                    type="button"
+                    className="bg-primary-foreground text-xs text-primary ring-1 ring-primary transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
+                  >
+                    Loading Status...
+                  </Button>
+                )}
+              </>
+            )}
           </div>
         </div>
         <div className="mt-10 space-y-4">

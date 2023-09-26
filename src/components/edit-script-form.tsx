@@ -66,7 +66,7 @@ export function EditScriptForm({
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Textarea rows={3} {...field} />
+                      <Textarea rows={5} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -77,7 +77,7 @@ export function EditScriptForm({
         </div>
 
         <div className="flex justify-end">
-          <Button type="submit">
+          <Button type="submit" disabled={form.formState.isSubmitting}>
             <>
               {form.formState.isSubmitting
                 ? "Generating..."

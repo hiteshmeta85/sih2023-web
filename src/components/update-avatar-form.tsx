@@ -106,7 +106,9 @@ export function UpdateAvatarForm({
             </FormItem>
           )}
         />
-        <Button type="submit">Save</Button>
+        <Button type="submit" disabled={!form.formState.isSubmitting}>
+          Save
+        </Button>
       </form>
     </Form>
   );

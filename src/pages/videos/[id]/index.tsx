@@ -130,6 +130,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         notFound: true,
       };
     }
+    console.log(data.script.script_sections);
     return {
       props: {
         videoData: data,
