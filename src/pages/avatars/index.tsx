@@ -8,9 +8,10 @@ import { AvatarIP } from "@/types";
 
 interface PageIP {
   avatars: AvatarIP[];
+  message: string;
 }
 
-export default function Avatars({ avatars }: PageIP) {
+export default function Avatars({ avatars, message }: PageIP) {
   const router = useRouter();
 
   return (
@@ -53,7 +54,7 @@ export default function Avatars({ avatars }: PageIP) {
               })}
             </div>
           ) : (
-            <p className="text-muted-foreground">No avatars found</p>
+            <p className="text-muted-foreground">{message}</p>
           )}
         </div>
       </div>
@@ -71,18 +72,21 @@ export async function getServerSideProps() {
       return {
         props: {
           avatars: [],
+          message: "No avatars found",
         },
       };
     }
     return {
       props: {
         avatars: data,
+        message: "",
       },
     };
   } catch (err) {
     return {
       props: {
         avatars: [],
+        message: "Internal Server Error",
       },
     };
   }

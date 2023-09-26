@@ -29,14 +29,14 @@ export default function IndividualVideo({ videoData }: PageIP) {
       </Navbar>
       <div className="container px-4 py-10">
         <div className="space-y-4">
-          <h2 className="text-4xl tracking-wider text-yellow-400">
+          <h2 className="text-4xl tracking-wider text-yellow-400 first-letter:uppercase">
             {videoData.title}
           </h2>
-          <p className="text-sm tracking-wide text-muted-foreground">
+          <p className="text-sm tracking-wide text-muted-foreground first-letter:uppercase">
             {videoData.description}
           </p>
           <div className="flex items-center gap-2">
-            <p className="inline-flex h-9 items-center justify-center rounded-md border border-input bg-transparent px-4 py-2 text-sm font-medium shadow-sm">
+            <p className="inline-flex h-9 items-center justify-center rounded-md border border-input bg-transparent px-4 py-2 text-sm font-medium capitalize shadow-sm">
               {videoData.language}
             </p>
             <p className="inline-flex h-9 items-center justify-center rounded-md border border-input bg-transparent px-4 py-2 text-sm font-medium shadow-sm">

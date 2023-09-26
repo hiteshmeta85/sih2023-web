@@ -8,9 +8,10 @@ import { VideoIP } from "@/types";
 
 interface PageIP {
   videos: VideoIP[];
+  message: string;
 }
 
-export default function Videos({ videos }: PageIP) {
+export default function Videos({ videos, message }: PageIP) {
   const router = useRouter();
 
   return (
@@ -53,7 +54,7 @@ export default function Videos({ videos }: PageIP) {
               })}
             </div>
           ) : (
-            <p className="text-muted-foreground">No videos found</p>
+            <p className="text-muted-foreground">{message}</p>
           )}
         </div>
       </div>
@@ -71,18 +72,21 @@ export async function getServerSideProps() {
       return {
         props: {
           videos: [],
+          message: "No videos found",
         },
       };
     }
     return {
       props: {
         videos: data,
+        message: "",
       },
     };
   } catch (err) {
     return {
       props: {
         videos: [],
+        message: "Internal Server Error",
       },
     };
   }
