@@ -21,6 +21,9 @@ export default function Avatars({ avatars, message }: PageIP) {
           <Button variant="outline" onClick={() => router.push("/")}>
             Home
           </Button>
+          <Button variant="outline" onClick={() => router.push("/videos")}>
+            Videos
+          </Button>
           <Button
             variant="outline"
             onClick={() => router.push("/video-generation/generate-avatar")}

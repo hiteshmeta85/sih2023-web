@@ -21,6 +21,9 @@ export default function Videos({ videos, message }: PageIP) {
           <Button variant="outline" onClick={() => router.push("/")}>
             Home
           </Button>
+          <Button variant="outline" onClick={() => router.push("/avatars")}>
+            Avatars
+          </Button>
           <Button
             variant="outline"
             onClick={() => router.push("/video-generation")}

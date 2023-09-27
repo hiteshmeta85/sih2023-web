@@ -50,13 +50,6 @@ export default function Home() {
           >
             Avatar Showcase
           </Button>
-          <Button
-            variant="outline"
-            type="button"
-            onClick={() => router.push("/links")}
-          >
-            All Links
-          </Button>
         </div>
       </Navbar>
 
@@ -116,8 +109,9 @@ export default function Home() {
         </div>
 
         <div className="mx-auto max-w-screen-md space-y-12 rounded-3xl bg-muted p-16">
-          <p className="text-2xl font-bold  md:text-3xl md:leading-[3rem]">
-            Start your journey! Ask the AI to Design
+          <p className="text-2xl font-bold md:text-3xl md:leading-[3rem]">
+            <span className="text-cyan-500">Start your journey!</span> Ask the
+            AI to Design
           </p>
           <PromptInput
             placeholder="Paste your press release here."
