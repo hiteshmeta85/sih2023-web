@@ -34,8 +34,8 @@ export default function UpdateAvatar() {
       router.push("/video-generation/generate-avatar");
     } else {
       setAvatarInfo(data);
-      setIsLoading(false);
     }
+    setIsLoading(false);
   }, [router]);
 
   async function onSubmit(data: z.infer<typeof UpdateAvatarFormSchema>) {

@@ -108,7 +108,7 @@ export default function IndividualVideo({ videoData }: PageIP) {
           <div className="space-y-4">
             <p className="text-2xl font-medium">Explore the Avatar in Detail</p>
             <div className="grid grid-cols-4">
-              <AvatarCard {...AVATAR_OPTIONS[0]} />
+              <AvatarCard {...videoData.avatar} />
             </div>
           </div>
         </div>
