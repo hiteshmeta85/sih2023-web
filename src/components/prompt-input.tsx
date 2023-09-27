@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { ArrowRightIcon, ReloadIcon } from "@radix-ui/react-icons";
+import DisclaimerCard from "@/components/disclaimer-card";
 
 export const PromptFormSchema = z.object({
   prompt: z.string().min(1, {
@@ -67,6 +68,9 @@ export function PromptInput({
               </>
             </Button>
           </div>
+        </div>
+        <div className="mt-4">
+          <DisclaimerCard />
         </div>
       </form>
     </Form>
