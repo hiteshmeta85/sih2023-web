@@ -17,8 +17,9 @@ export const LANGUAGES = [
 ];
 
 export const DURATION_OPTIONS = [
+  { label: "15 seconds", value: 15 },
   { label: "30 seconds", value: 30 },
-  { label: "1 minute", value: 60 },
+  { label: "60 seconds", value: 60 },
 ];
 
 export const AVATAR_OPTIONS = [
@@ -286,4 +287,12 @@ export const VIDEOS_DATA = [
     created_at: "2023-09-24T11:19:34.499367Z",
     user: 1,
   },
+];
+
+export const ROUTES = [
+  { label: "Home", path: "/" },
+  { label: "Avatar Showcase", path: "/avatars" },
+  { label: "Video Showcase", path: "/videos" },
+  { label: "Generate Video", path: "/video-generation" },
+  { label: "Generate Avatar", path: "/video-generation/generate-avatar" },
 ];

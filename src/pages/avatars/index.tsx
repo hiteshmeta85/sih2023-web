@@ -1,11 +1,17 @@
 import { Button } from "@/components/ui/button";
-import { AVATAR_OPTIONS } from "@/constants";
 import AvatarCard from "@/components/avatar-card";
 import Navbar from "@/components/navbar";
 import { useRouter } from "next/router";
 import { MagicWandIcon } from "@radix-ui/react-icons";
+import axios from "axios";
+import { AvatarIP } from "@/types";
 
-export default function Avatars() {
+interface PageIP {
+  avatars: AvatarIP[];
+  message: string;
+}
+
+export default function Avatars({ avatars, message }: PageIP) {
   const router = useRouter();
 
   return (
@@ -41,13 +47,47 @@ export default function Avatars() {
           </p>
         </div>
         <div className="mt-10">
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-            {AVATAR_OPTIONS.map((avatar) => {
-              return <AvatarCard key={avatar.id} {...avatar} />;
-            })}
-          </div>
+          {avatars && avatars.length > 0 ? (
+            <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+              {avatars.map((avatar) => {
+                return <AvatarCard key={avatar.id} {...avatar} />;
+              })}
+            </div>
+          ) : (
+            <p className="text-muted-foreground">{message}</p>
+          )}
         </div>
       </div>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  try {
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/avatars`,
+    );
+    const data = res.data;
+    if (!data) {
+      return {
+        props: {
+          avatars: [],
+          message: "No avatars found",
+        },
+      };
+    }
+    return {
+      props: {
+        avatars: data,
+        message: "",
+      },
+    };
+  } catch (err) {
+    return {
+      props: {
+        avatars: [],
+        message: "Internal Server Error",
+      },
+    };
+  }
 }

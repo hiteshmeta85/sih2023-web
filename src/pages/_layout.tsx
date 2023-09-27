@@ -5,8 +5,9 @@ import { Toaster } from "@/components/ui/toaster";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const meta = {
-    title: "SIH 2023 Web",
-    description: "SIH 2023 Web",
+    title: "VisualX AI",
+    description:
+      "Transforming Text into Video Unleashing AI Magic on PIB Press Releases!",
   };
 
   return (

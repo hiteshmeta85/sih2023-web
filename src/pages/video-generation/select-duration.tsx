@@ -1,6 +1,20 @@
 import { DURATION_OPTIONS } from "@/constants";
+import { useRouter } from "next/router";
 
 export default function SelectDuration() {
+  const router = useRouter();
+
+  const selectDuration = async (duration: number) => {
+    if (localStorage.getItem("video-creation-data") !== null) {
+      const data = JSON.parse(localStorage.getItem("video-creation-data")!);
+      data.duration = duration;
+      localStorage.setItem("video-creation-data", JSON.stringify(data));
+      await router.push("/video-generation/select-avatar");
+    } else {
+      await router.push("/video-generation");
+    }
+  };
+
   return (
     <div className="container flex min-h-screen max-w-screen-md flex-col items-center justify-center p-4">
       <div>
@@ -20,13 +34,11 @@ export default function SelectDuration() {
           </p>
         </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-4">
+        <div className="mt-10 grid grid-cols-3 gap-4">
           {DURATION_OPTIONS.map((duration) => (
             <div
               key={duration.value}
-              onClick={() => {
-                console.log(duration.value);
-              }}
+              onClick={() => selectDuration(duration.value)}
               className="relative flex transform cursor-pointer flex-col items-center justify-center space-y-2 rounded-xl border-2 p-10 transition-all duration-300 hover:bg-primary-foreground"
             >
               {duration.label}
