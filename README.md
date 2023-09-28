@@ -2,9 +2,7 @@
 
 > Disclaimer: This project is still under development. The final product may differ from the current version. This project does not follow any best practices and is not optimized for production.
 
----
-
-### About
+## About
 
 **Topic**
 - SIH1330
@@ -18,9 +16,7 @@
 **Domain Bucket**
 - Smart Automation
 
----
-
-### Team Members
+## Team Members
 
 - [Hitesh Meta](https://github.com/hiteshmeta85)
 - [Om Surve](https://github.com/gamingflexer)
@@ -28,8 +24,6 @@
 - [Kunal Wagh](https://github.com/kunalwagh30092002)
 - [Yash Wakekar](https://github.com/Yash-Wakekar)
 - [Tanshiq Parkar](https://github.com/RevTpark)
-
----
 
 ## Getting Started
 
@@ -53,8 +47,6 @@ pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
----
 
 ## Technologies Used
 
