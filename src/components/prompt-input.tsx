@@ -69,9 +69,6 @@ export function PromptInput({
             </Button>
           </div>
         </div>
-        <div className="mt-4">
-          <DisclaimerCard />
-        </div>
       </form>
     </Form>
   );

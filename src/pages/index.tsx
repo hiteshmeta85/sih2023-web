@@ -15,6 +15,7 @@ import { PromptFormSchema, PromptInput } from "@/components/prompt-input";
 import AvatarsShowcase from "@/components/avatars-showcase";
 import { useRouter } from "next/router";
 import * as z from "zod";
+import DisclaimerCard from "@/components/disclaimer-card";
 
 export default function Home() {
   const router = useRouter();
@@ -113,10 +114,13 @@ export default function Home() {
             <span className="text-cyan-500">Start your journey!</span> Ask the
             AI to Design
           </p>
-          <PromptInput
-            placeholder="Paste your press release here."
-            onSubmit={onSubmit}
-          />
+          <div className="space-y-2">
+            <PromptInput
+              placeholder="Paste your press release here."
+              onSubmit={onSubmit}
+            />
+            <DisclaimerCard />
+          </div>
         </div>
 
         <div className="mx-auto grid max-w-screen-md gap-6 py-24 md:grid-cols-2">

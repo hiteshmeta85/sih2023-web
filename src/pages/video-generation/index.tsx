@@ -2,6 +2,8 @@ import React from "react";
 import { PromptFormSchema, PromptInput } from "@/components/prompt-input";
 import * as z from "zod";
 import { useRouter } from "next/router";
+import DisclaimerCard from "@/components/disclaimer-card";
+import { Button } from "@/components/ui/button";
 
 const VideoGeneration = () => {
   const router = useRouter();
@@ -31,10 +33,27 @@ const VideoGeneration = () => {
             Transforming Text into Engaging Visuals
           </h2>
         </div>
-        <PromptInput
-          placeholder="Paste your press release here."
-          onSubmit={onSubmit}
-        />
+        <div className="space-y-4">
+          <PromptInput
+            placeholder="Paste your press release here."
+            onSubmit={onSubmit}
+          />
+          <p className="text-center">Or</p>
+          <div className="flex justify-center">
+            <Button
+              type={"button"}
+              variant="outline"
+              size={"lg"}
+              onClick={() =>
+                router.push("/video-generation/select-press-release")
+              }
+              className="border-2 border-white"
+            >
+              Select Press Release
+            </Button>
+          </div>
+          <DisclaimerCard />
+        </div>
       </div>
     </div>
   );

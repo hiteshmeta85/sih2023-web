@@ -16,6 +16,25 @@ export const LANGUAGES = [
   { label: "Sanskrit", value: "sanskrit" },
 ];
 
+export const PRESS_RELEASE_DATA = [
+  {
+    id: 1,
+    title: "PRESIDENT OF INDIA GRACES INDIA SMART CITIES CONCLAVE 2023",
+    link: "https://pib.gov.in/PressReleasePage.aspx?PRID=1961189",
+  },
+  {
+    id: 2,
+    title: "PM addresses YouTubers during YouTube Fanfest India 2023",
+    link: "https://pib.gov.in/PressReleasePage.aspx?PRID=1961491",
+  },
+  {
+    id: 3,
+    title:
+      "Prime Minister congratulates Sift Kaur Samra on winning Gold Medal in the 50m Rifle 3 Positions Women’s shooting",
+    link: "https://pib.gov.in/PressReleasePage.aspx?PRID=1961471",
+  },
+];
+
 export const DURATION_OPTIONS = [
   { label: "15 seconds", value: 15 },
   { label: "30 seconds", value: 30 },

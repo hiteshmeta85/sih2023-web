@@ -5,6 +5,7 @@ import { PromptFormSchema, PromptInput } from "@/components/prompt-input";
 import * as z from "zod";
 import axios from "axios";
 import { toast } from "@/components/ui/use-toast";
+import DisclaimerCard from "@/components/disclaimer-card";
 
 export default function GenerateAvatar() {
   const router = useRouter();
@@ -61,11 +62,12 @@ export default function GenerateAvatar() {
           </Button>
         </div>
 
-        <div className="mt-10">
+        <div className="mt-10 space-y-2">
           <PromptInput
             placeholder={"Generate an avatar that looks like ..."}
             onSubmit={onSubmit}
           />
+          <DisclaimerCard />
         </div>
       </div>
     </div>
