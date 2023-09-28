@@ -1,11 +1,9 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
-import { useRouter } from "next/router";
 import Link from "next/link";
 import { ROUTES } from "@/constants";
 
 export default function Home() {
-  const router = useRouter();
   return (
     <main>
       <div className="flex flex-col space-y-4 p-8">
