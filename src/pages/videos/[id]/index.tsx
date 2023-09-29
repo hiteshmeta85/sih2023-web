@@ -62,6 +62,7 @@ export default function IndividualVideo({ videoData }: PageIP) {
                 height="100%"
                 url={videoData.link}
                 controls
+                light={videoData.thumbnail}
               />
             </div>
             <div className="space-y-4">

@@ -13,11 +13,18 @@ export default function VideoCard({
   language,
   avatar,
   status,
+  thumbnail,
 }: VideoIP) {
   return (
     <div className="flex flex-col overflow-hidden rounded-xl border-4">
       <div className="aspect-video">
-        <ReactPlayer width="100%" height="100%" url={link} controls />
+        <ReactPlayer
+          width="100%"
+          height="100%"
+          url={link}
+          controls
+          light={thumbnail}
+        />
       </div>
       <div className="flex flex-1 flex-col justify-between space-y-8 p-4">
         <div className="space-y-2">

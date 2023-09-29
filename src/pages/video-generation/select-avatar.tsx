@@ -6,6 +6,7 @@ import { ArrowRightIcon, ReloadIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { toast } from "@/components/ui/use-toast";
+import VideoGenerationPageLayout from "@/pages/video-generation/_layout";
 
 interface PageIP {
   avatars: AvatarIP[];
@@ -54,101 +55,103 @@ export default function SelectAvatar({ avatars }: PageIP) {
   };
 
   return (
-    <div className="container flex min-h-screen max-w-screen-md flex-col items-center justify-center p-4">
-      <div>
-        <div className="space-y-4">
-          <div className="flex items-center gap-2">
-            <p className="flex h-20 w-20 items-center justify-center rounded-full bg-primary-foreground text-4xl">
-              4.
+    <VideoGenerationPageLayout>
+      <div className="container flex min-h-screen max-w-screen-md flex-col items-center justify-center p-4">
+        <div>
+          <div className="space-y-4">
+            <div className="flex items-center gap-2">
+              <p className="flex h-20 w-20 items-center justify-center rounded-full bg-primary-foreground text-4xl">
+                4.
+              </p>
+              <h2 className="text-4xl tracking-wider text-yellow-400">
+                Select Avatar
+              </h2>
+            </div>
+            <p className="text-sm tracking-wide text-muted-foreground">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+              quis elit vel urna cursus suscipit et ac risus. Phasellus viverra
+              lorem non sem consectetur rhoncus. Sed nec semper nibh.
             </p>
-            <h2 className="text-4xl tracking-wider text-yellow-400">
-              Select Avatar
-            </h2>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => router.push("/video-generation/generate-avatar")}
+            >
+              <>
+                Generate Avatar
+                <ArrowRightIcon className="ml-2" />
+              </>
+            </Button>
           </div>
-          <p className="text-sm tracking-wide text-muted-foreground">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-            quis elit vel urna cursus suscipit et ac risus. Phasellus viverra
-            lorem non sem consectetur rhoncus. Sed nec semper nibh.
-          </p>
-          <Button
-            type="button"
-            variant="outline"
-            onClick={() => router.push("/video-generation/generate-avatar")}
-          >
-            <>
-              Generate Avatar
-              <ArrowRightIcon className="ml-2" />
-            </>
-          </Button>
-        </div>
 
-        <div className="mt-10 space-y-4">
-          <div className="flex gap-2">
-            {avatars.map((avatar) => {
-              return (
-                <Button
-                  key={avatar.id}
-                  className={
-                    avatar.id === currentAvatar?.id
-                      ? "bg-primary text-primary-foreground"
-                      : "transform bg-primary-foreground text-primary ring-1 ring-primary transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
-                  }
-                  onClick={() => setCurrentAvatar(avatar)}
-                >
-                  {avatar.nickname}
-                </Button>
-              );
-            })}
-          </div>
-          <div>
-            {avatars && avatars.length > 0 ? (
-              currentAvatar && (
-                <div className="flex gap-4">
-                  <Image
-                    src={currentAvatar.image}
-                    alt={currentAvatar.nickname}
-                    width={400}
-                    height={400}
-                    layout={"fixed"}
-                    className="h-[400px] w-[400px] min-w-[400px] rounded-xl object-cover"
-                  />
-                  <div>
-                    <p className="text-2xl font-bold">
-                      {currentAvatar.nickname}
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      {currentAvatar.description}
-                    </p>
-                    <div className="mt-4 flex gap-2">
-                      <div className="inline-flex items-center justify-center rounded-md bg-primary-foreground px-4 py-2 text-xs text-primary ring-1 ring-primary">
-                        {currentAvatar.gender}
+          <div className="mt-10 space-y-4">
+            <div className="flex gap-2">
+              {avatars.map((avatar) => {
+                return (
+                  <Button
+                    key={avatar.id}
+                    className={
+                      avatar.id === currentAvatar?.id
+                        ? "bg-primary text-primary-foreground"
+                        : "transform bg-primary-foreground text-primary ring-1 ring-primary transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
+                    }
+                    onClick={() => setCurrentAvatar(avatar)}
+                  >
+                    {avatar.nickname}
+                  </Button>
+                );
+              })}
+            </div>
+            <div>
+              {avatars && avatars.length > 0 ? (
+                currentAvatar && (
+                  <div className="flex gap-4">
+                    <Image
+                      src={currentAvatar.image}
+                      alt={currentAvatar.nickname}
+                      width={400}
+                      height={400}
+                      layout={"fixed"}
+                      className="h-[400px] w-[400px] min-w-[400px] rounded-xl object-cover"
+                    />
+                    <div>
+                      <p className="text-2xl font-bold">
+                        {currentAvatar.nickname}
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {currentAvatar.description}
+                      </p>
+                      <div className="mt-4 flex gap-2">
+                        <div className="inline-flex items-center justify-center rounded-md bg-primary-foreground px-4 py-2 text-xs text-primary ring-1 ring-primary">
+                          {currentAvatar.gender}
+                        </div>
+                        <Button
+                          type="button"
+                          onClick={() => handleAvatarSelect(currentAvatar)}
+                          disabled={isLoading}
+                          className="bg-primary-foreground text-xs text-primary ring-1 ring-primary transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
+                        >
+                          <>
+                            {isLoading ? "Generating..." : "Start"}
+                            {isLoading ? (
+                              <ReloadIcon className="ml-2 animate-spin" />
+                            ) : (
+                              <ArrowRightIcon className="ml-2" />
+                            )}
+                          </>
+                        </Button>
                       </div>
-                      <Button
-                        type="button"
-                        onClick={() => handleAvatarSelect(currentAvatar)}
-                        disabled={isLoading}
-                        className="bg-primary-foreground text-xs text-primary ring-1 ring-primary transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
-                      >
-                        <>
-                          {isLoading ? "Generating..." : "Start"}
-                          {isLoading ? (
-                            <ReloadIcon className="ml-2 animate-spin" />
-                          ) : (
-                            <ArrowRightIcon className="ml-2" />
-                          )}
-                        </>
-                      </Button>
                     </div>
                   </div>
-                </div>
-              )
-            ) : (
-              <p className="text-muted-foreground">No avatars found</p>
-            )}
+                )
+              ) : (
+                <p className="text-muted-foreground">No avatars found</p>
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </VideoGenerationPageLayout>
   );
 }
 

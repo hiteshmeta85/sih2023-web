@@ -14,6 +14,7 @@ export interface VideoIP {
   script: ScriptIP;
   title: string;
   description: string;
+  thumbnail: string;
   language: string;
   link: string;
   duration: number;

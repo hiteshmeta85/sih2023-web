@@ -4,6 +4,7 @@ import * as z from "zod";
 import { useRouter } from "next/router";
 import DisclaimerCard from "@/components/disclaimer-card";
 import { Button } from "@/components/ui/button";
+import VideoGenerationPageLayout from "@/pages/video-generation/_layout";
 
 const VideoGeneration = () => {
   const router = useRouter();
@@ -23,39 +24,41 @@ const VideoGeneration = () => {
   }
 
   return (
-    <div className="container flex min-h-screen flex-col justify-center p-4">
-      <div className="space-y-12">
-        <div className="text-center">
-          <h1 className="text-8xl font-semibold leading-[9rem]">
-            Press Release to Video
-          </h1>
-          <h2 className="text-4xl tracking-wider text-yellow-400">
-            Transforming Text into Engaging Visuals
-          </h2>
-        </div>
-        <div className="space-y-4">
-          <PromptInput
-            placeholder="Paste your press release here."
-            onSubmit={onSubmit}
-          />
-          <p className="text-center">Or</p>
-          <div className="flex justify-center">
-            <Button
-              type={"button"}
-              variant="outline"
-              size={"lg"}
-              onClick={() =>
-                router.push("/video-generation/select-press-release")
-              }
-              className="border-2 border-white"
-            >
-              Select Press Release
-            </Button>
+    <VideoGenerationPageLayout>
+      <div className="container flex min-h-screen flex-col justify-center p-4">
+        <div className="space-y-12">
+          <div className="text-center">
+            <h1 className="text-8xl font-semibold leading-[9rem]">
+              Press Release to Video
+            </h1>
+            <h2 className="text-4xl tracking-wider text-yellow-400">
+              Transforming Text into Engaging Visuals
+            </h2>
           </div>
-          <DisclaimerCard />
+          <div className="space-y-4">
+            <PromptInput
+              placeholder="Paste your press release here."
+              onSubmit={onSubmit}
+            />
+            <p className="text-center">Or</p>
+            <div className="flex justify-center">
+              <Button
+                type={"button"}
+                variant="outline"
+                size={"lg"}
+                onClick={() =>
+                  router.push("/video-generation/select-press-release")
+                }
+                className="border-2 border-white"
+              >
+                Select Press Release
+              </Button>
+            </div>
+            <DisclaimerCard />
+          </div>
         </div>
       </div>
-    </div>
+    </VideoGenerationPageLayout>
   );
 };
 

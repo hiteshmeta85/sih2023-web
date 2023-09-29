@@ -6,6 +6,7 @@ import * as z from "zod";
 import axios from "axios";
 import { toast } from "@/components/ui/use-toast";
 import DisclaimerCard from "@/components/disclaimer-card";
+import VideoGenerationPageLayout from "@/pages/video-generation/_layout";
 
 export default function GenerateAvatar() {
   const router = useRouter();
@@ -38,38 +39,44 @@ export default function GenerateAvatar() {
   }
 
   return (
-    <div className="container flex min-h-screen max-w-screen-md flex-col items-center justify-center p-4">
-      <div>
-        <div className="space-y-4">
-          <div className="flex items-center gap-2">
-            <p className="flex h-20 w-20 items-center justify-center rounded-full bg-primary-foreground text-4xl">
-              <RocketIcon className="h-6 w-6" />
+    <VideoGenerationPageLayout>
+      <div className="container flex min-h-screen max-w-screen-md flex-col items-center justify-center p-4">
+        <div>
+          <div className="space-y-4">
+            <div className="flex items-center gap-2">
+              <p className="flex h-20 w-20 items-center justify-center rounded-full bg-primary-foreground text-4xl">
+                <RocketIcon className="h-6 w-6" />
+              </p>
+              <h2 className="text-4xl tracking-wider text-violet-500">
+                Generate Avatar
+              </h2>
+            </div>
+            <p className="text-sm tracking-wide text-muted-foreground">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+              quis elit vel urna cursus suscipit et ac risus. Phasellus viverra
+              lorem non sem consectetur rhoncus. Sed nec semper nibh.
             </p>
-            <h2 className="text-4xl tracking-wider text-violet-500">
-              Generate Avatar
-            </h2>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => router.back()}
+            >
+              <>
+                <ArrowLeftIcon className="mr-2" />
+                Back
+              </>
+            </Button>
           </div>
-          <p className="text-sm tracking-wide text-muted-foreground">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-            quis elit vel urna cursus suscipit et ac risus. Phasellus viverra
-            lorem non sem consectetur rhoncus. Sed nec semper nibh.
-          </p>
-          <Button type="button" variant="outline" onClick={() => router.back()}>
-            <>
-              <ArrowLeftIcon className="mr-2" />
-              Back
-            </>
-          </Button>
-        </div>
 
-        <div className="mt-10 space-y-2">
-          <PromptInput
-            placeholder={"Generate an avatar that looks like ..."}
-            onSubmit={onSubmit}
-          />
-          <DisclaimerCard />
+          <div className="mt-10 space-y-2">
+            <PromptInput
+              placeholder={"Generate an avatar that looks like ..."}
+              onSubmit={onSubmit}
+            />
+            <DisclaimerCard />
+          </div>
         </div>
       </div>
-    </div>
+    </VideoGenerationPageLayout>
   );
 }

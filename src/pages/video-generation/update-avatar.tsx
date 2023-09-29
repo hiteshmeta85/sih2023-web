@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import * as z from "zod";
 import { toast } from "@/components/ui/use-toast";
 import axios from "axios";
+import VideoGenerationPageLayout from "@/pages/video-generation/_layout";
 
 export default function UpdateAvatar() {
   const router = useRouter();
@@ -65,57 +66,59 @@ export default function UpdateAvatar() {
   }
 
   return (
-    <div className="container flex min-h-screen max-w-screen-md flex-col items-center justify-center p-4">
-      <div>
-        <div className="space-y-4">
-          <div className="flex items-center gap-2">
-            <p className="flex h-20 w-20 items-center justify-center rounded-full bg-primary-foreground text-4xl">
-              <StarFilledIcon className="h-6 w-6" />
-            </p>
-            <h2 className="text-4xl tracking-wider text-violet-500">
-              Update Avatar
-            </h2>
-          </div>
-          <p className="text-sm tracking-wide text-muted-foreground">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-            quis elit vel urna cursus suscipit et ac risus. Phasellus viverra
-            lorem non sem consectetur rhoncus. Sed nec semper nibh.
-          </p>
-          <Button
-            type="button"
-            variant="outline"
-            onClick={() => router.push("/video-generation/generate-avatar")}
-          >
-            <>
-              Regenerate
-              <MagicWandIcon className="ml-2" />
-            </>
-          </Button>
-        </div>
-
-        <div className="mt-10">
-          {isLoading ? (
-            <p className="text-muted-foreground">Loading...</p>
-          ) : avatarInfo !== null ? (
-            <div className="flex gap-4">
-              <div className="space-y-2">
-                <Image
-                  src={avatarInfo.img_link}
-                  alt="John Doe"
-                  width={400}
-                  height={400}
-                  layout={"fixed"}
-                  className="h-[400px] w-[400px] min-w-[400px] rounded-xl object-cover"
-                />
-                <p className="text-sm text-primary">AI-Generated Avatar</p>
-              </div>
-              <UpdateAvatarForm onSubmit={onSubmit} />
+    <VideoGenerationPageLayout>
+      <div className="container flex min-h-screen max-w-screen-md flex-col items-center justify-center p-4">
+        <div>
+          <div className="space-y-4">
+            <div className="flex items-center gap-2">
+              <p className="flex h-20 w-20 items-center justify-center rounded-full bg-primary-foreground text-4xl">
+                <StarFilledIcon className="h-6 w-6" />
+              </p>
+              <h2 className="text-4xl tracking-wider text-violet-500">
+                Update Avatar
+              </h2>
             </div>
-          ) : (
-            <p className="text-muted-foreground">No avatar found</p>
-          )}
+            <p className="text-sm tracking-wide text-muted-foreground">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+              quis elit vel urna cursus suscipit et ac risus. Phasellus viverra
+              lorem non sem consectetur rhoncus. Sed nec semper nibh.
+            </p>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => router.push("/video-generation/generate-avatar")}
+            >
+              <>
+                Regenerate
+                <MagicWandIcon className="ml-2" />
+              </>
+            </Button>
+          </div>
+
+          <div className="mt-10">
+            {isLoading ? (
+              <p className="text-muted-foreground">Loading...</p>
+            ) : avatarInfo !== null ? (
+              <div className="flex gap-4">
+                <div className="space-y-2">
+                  <Image
+                    src={avatarInfo.img_link}
+                    alt="John Doe"
+                    width={400}
+                    height={400}
+                    layout={"fixed"}
+                    className="h-[400px] w-[400px] min-w-[400px] rounded-xl object-cover"
+                  />
+                  <p className="text-sm text-primary">AI-Generated Avatar</p>
+                </div>
+                <UpdateAvatarForm onSubmit={onSubmit} />
+              </div>
+            ) : (
+              <p className="text-muted-foreground">No avatar found</p>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </VideoGenerationPageLayout>
   );
 }
