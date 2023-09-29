@@ -3,6 +3,7 @@ import Navbar from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import {
   FileTextIcon,
+  GitHubLogoIcon,
   KeyboardIcon,
   LetterCaseCapitalizeIcon,
   PersonIcon,
@@ -11,16 +12,34 @@ import {
 } from "@radix-ui/react-icons";
 import Image from "next/image";
 import React from "react";
-import { PromptInput } from "@/components/prompt-input";
+import { PromptFormSchema, PromptInput } from "@/components/prompt-input";
 import AvatarsShowcase from "@/components/avatars-showcase";
 import { useRouter } from "next/router";
+import * as z from "zod";
+import DisclaimerCard from "@/components/disclaimer-card";
+import Link from "next/link";
+import { DEVELOPER_SECTION_DATA, IMAGE_GALLERY_DATA } from "@/constants";
 
 export default function Home() {
   const router = useRouter();
+
+  async function onSubmit(data: z.infer<typeof PromptFormSchema>) {
+    localStorage.removeItem("video-creation-data");
+    localStorage.setItem(
+      "video-creation-data",
+      JSON.stringify({
+        prompt: data.prompt,
+        language: null,
+        duration: null,
+      }),
+    );
+    await router.push("/video-generation/select-language");
+  }
+
   return (
     <main>
       <Navbar>
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex flex-wrap items-center gap-4">
           <Button
             variant="outline"
             type="button"
@@ -90,9 +109,10 @@ export default function Home() {
 
           <div>
             <Button
-              className="w-fit rounded-full bg-violet-500 py-2 hover:bg-violet-600"
+              size="lg"
+              className="w-fit rounded-full bg-violet-500 py-4 text-lg hover:bg-violet-600"
               variant="secondary"
-              onClick={() => router.push("video-generation/")}
+              onClick={() => router.push("/video-generation")}
             >
               Generate AI Video
             </Button>
@@ -100,15 +120,22 @@ export default function Home() {
         </div>
 
         <div className="mx-auto max-w-screen-md space-y-12 rounded-3xl bg-muted p-16">
-          <p className="text-2xl font-bold  md:text-3xl md:leading-[3rem]">
-            Start your journey Ask the AI to Design
+          <p className="text-2xl font-bold md:text-3xl md:leading-[3rem]">
+            <span className="text-cyan-500">Start your journey!</span> Ask the
+            AI to Design
           </p>
-          <PromptInput />
+          <div className="space-y-2">
+            <PromptInput
+              placeholder="Paste your press release here."
+              onSubmit={onSubmit}
+            />
+            <DisclaimerCard />
+          </div>
         </div>
 
         <div className="mx-auto grid max-w-screen-md gap-6 py-24 md:grid-cols-2">
           <div>
-            <p className="text-left text-3xl font-bold">
+            <p className="text-left text-2xl font-bold md:text-3xl">
               Our <span className="text-rose-500">Text-to-Video</span> platform
               automate the process of creating videos, eliminating the need for
               manual editing and production.
@@ -124,7 +151,7 @@ export default function Home() {
             />
           </div>
           <div>
-            <p className="text-left text-3xl font-bold">
+            <p className="text-left text-2xl font-bold md:text-3xl">
               Our platform support multiple{" "}
               <span className="text-blue-500">Indian languages</span> and
               accents, allowing for a global reach and audience targeting.
@@ -153,10 +180,57 @@ export default function Home() {
               "/images/avatar_1.jpeg",
               "/images/avatar_3.jpeg",
               "/images/avatar_2.jpeg",
-              "/images/avatar_6.jpg",
-              "/images/avatar_7.jpg",
+              "/images/avatar_4.jpeg",
+              "/images/avatar_5.png",
             ]}
           />
+        </div>
+      </div>
+
+      <div className="container mx-auto grid space-y-8 pb-24 text-justify">
+        <p className="text-center text-2xl font-bold md:text-3xl md:leading-[3rem]">
+          <span className="text-orange-500">News</span> in Pictures
+        </p>
+        <div className="mx-auto grid max-w-screen-md gap-6">
+          {IMAGE_GALLERY_DATA.map((image) => {
+            return (
+              <div className="items-center gap-4 md:flex" key={image.id}>
+                <Image
+                  src={image.image}
+                  alt=""
+                  width={400}
+                  height={400}
+                  className="rounded-xl border p-2"
+                />
+                <div>
+                  <p className="text-lg font-semibold">{image.title}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="container mx-auto grid space-y-8 pb-24 text-center">
+        <p className="text-2xl font-bold md:text-3xl md:leading-[3rem]">
+          <span className="text-indigo-500">Developers</span> Section
+        </p>
+        <div className="mx-auto grid max-w-screen-md gap-4 md:grid-cols-2">
+          {DEVELOPER_SECTION_DATA.map((data) => {
+            return (
+              <div className="flex gap-4 rounded-xl border p-4" key={data.id}>
+                <div className="text-left">
+                  <p className="font-semibold">{data.name}</p>
+                  <p className="text-muted-foreground">{data.designation}</p>
+                  <div className="">
+                    <Link href={data.github_url}>
+                      <GitHubLogoIcon width={25} height={25} />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
 

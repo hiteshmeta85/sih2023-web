@@ -2,11 +2,16 @@ import Navbar from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import { MagicWandIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
-import { AVATAR_OPTIONS, VIDEOS_DATA } from "@/constants";
-import AvatarCard from "@/components/avatar-card";
 import VideoCard from "@/components/video-card";
+import axios from "axios";
+import { VideoIP } from "@/types";
 
-export default function Videos() {
+interface PageIP {
+  videos: VideoIP[];
+  message: string;
+}
+
+export default function Videos({ videos, message }: PageIP) {
   const router = useRouter();
 
   return (
@@ -15,6 +20,9 @@ export default function Videos() {
         <div className="flex items-center gap-4">
           <Button variant="outline" onClick={() => router.push("/")}>
             Home
+          </Button>
+          <Button variant="outline" onClick={() => router.push("/avatars")}>
+            Avatars
           </Button>
           <Button
             variant="outline"
@@ -42,13 +50,47 @@ export default function Videos() {
           </p>
         </div>
         <div className="mt-10">
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-            {VIDEOS_DATA.map((video) => {
-              return <VideoCard key={video.id} {...video} />;
-            })}
-          </div>
+          {videos && videos.length > 0 ? (
+            <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+              {videos.map((video) => {
+                return <VideoCard key={video.id} {...video} />;
+              })}
+            </div>
+          ) : (
+            <p className="text-muted-foreground">{message}</p>
+          )}
         </div>
       </div>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  try {
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/videos`,
+    );
+    const data = res.data;
+    if (!data) {
+      return {
+        props: {
+          videos: [],
+          message: "No videos found",
+        },
+      };
+    }
+    return {
+      props: {
+        videos: data,
+        message: "",
+      },
+    };
+  } catch (err) {
+    return {
+      props: {
+        videos: [],
+        message: "Internal Server Error",
+      },
+    };
+  }
 }

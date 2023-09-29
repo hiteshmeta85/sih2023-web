@@ -1,13 +1,57 @@
-import { AVATAR_OPTIONS } from "@/constants";
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import Image from "next/image";
-import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
+import axios from "axios";
+import { AvatarIP } from "@/types";
+import { ArrowRightIcon, ReloadIcon } from "@radix-ui/react-icons";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { toast } from "@/components/ui/use-toast";
 
-export default function SelectDuration() {
+interface PageIP {
+  avatars: AvatarIP[];
+}
+
+export default function SelectAvatar({ avatars }: PageIP) {
   const router = useRouter();
-  const [currentAvatar, setCurrentAvatar] = useState(AVATAR_OPTIONS[0]);
+  const [currentAvatar, setCurrentAvatar] = useState(
+    avatars ? avatars[0] : null,
+  );
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleAvatarSelect = async (avatar: AvatarIP) => {
+    setIsLoading(true);
+    if (localStorage.getItem("video-creation-data") !== null) {
+      const data = JSON.parse(localStorage.getItem("video-creation-data")!);
+      data.avatar = avatar.id;
+      localStorage.setItem("video-creation-data", JSON.stringify(data));
+      try {
+        const res = await axios.post(
+          // todo: remove leading slash
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/create-script/`,
+          {
+            prompt: data.prompt,
+            language: data.language,
+            duration: data.duration,
+            avatar: data.avatar,
+          },
+        );
+        if (res.data) {
+          await router.push(`/video-generation/edit-script/${res.data.id}`);
+        }
+      } catch (err) {
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "There was a problem with your request.",
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    } else {
+      await router.push("/video-generation");
+    }
+  };
 
   return (
     <div className="container flex min-h-screen max-w-screen-md flex-col items-center justify-center p-4">
@@ -40,12 +84,12 @@ export default function SelectDuration() {
 
         <div className="mt-10 space-y-4">
           <div className="flex gap-2">
-            {AVATAR_OPTIONS.map((avatar) => {
+            {avatars.map((avatar) => {
               return (
                 <Button
                   key={avatar.id}
                   className={
-                    avatar.id === currentAvatar.id
+                    avatar.id === currentAvatar?.id
                       ? "bg-primary text-primary-foreground"
                       : "transform bg-primary-foreground text-primary ring-1 ring-primary transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
                   }
@@ -57,44 +101,80 @@ export default function SelectDuration() {
             })}
           </div>
           <div>
-            {currentAvatar && (
-              <div className="flex gap-4">
-                <Image
-                  src={currentAvatar.image}
-                  alt={currentAvatar.nickname}
-                  width={400}
-                  height={400}
-                  layout={"fixed"}
-                  className="h-[400px] w-[400px] min-w-[400px] rounded-xl object-cover"
-                />
-                <div>
-                  <p className="text-2xl font-bold">{currentAvatar.nickname}</p>
-                  <p className="text-sm text-muted-foreground">
-                    {currentAvatar.description}
-                  </p>
-                  <div className="mt-4 flex gap-2">
-                    <div className="inline-flex items-center justify-center rounded-md bg-primary-foreground bg-violet-500 px-4 py-2 text-xs text-primary ring-1 ring-primary">
-                      {currentAvatar.gender}
+            {avatars && avatars.length > 0 ? (
+              currentAvatar && (
+                <div className="flex gap-4">
+                  <Image
+                    src={currentAvatar.image}
+                    alt={currentAvatar.nickname}
+                    width={400}
+                    height={400}
+                    layout={"fixed"}
+                    className="h-[400px] w-[400px] min-w-[400px] rounded-xl object-cover"
+                  />
+                  <div>
+                    <p className="text-2xl font-bold">
+                      {currentAvatar.nickname}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      {currentAvatar.description}
+                    </p>
+                    <div className="mt-4 flex gap-2">
+                      <div className="inline-flex items-center justify-center rounded-md bg-primary-foreground px-4 py-2 text-xs text-primary ring-1 ring-primary">
+                        {currentAvatar.gender}
+                      </div>
+                      <Button
+                        type="button"
+                        onClick={() => handleAvatarSelect(currentAvatar)}
+                        disabled={isLoading}
+                        className="bg-primary-foreground text-xs text-primary ring-1 ring-primary transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
+                      >
+                        <>
+                          {isLoading ? "Generating..." : "Start"}
+                          {isLoading ? (
+                            <ReloadIcon className="ml-2 animate-spin" />
+                          ) : (
+                            <ArrowRightIcon className="ml-2" />
+                          )}
+                        </>
+                      </Button>
                     </div>
-                    <Button
-                      type="button"
-                      onClick={() => {
-                        console.log(currentAvatar);
-                      }}
-                      className="bg-primary-foreground text-xs text-primary ring-1 ring-primary transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
-                    >
-                      <>
-                        Select
-                        <ArrowRightIcon className="ml-2" />
-                      </>
-                    </Button>
                   </div>
                 </div>
-              </div>
+              )
+            ) : (
+              <p className="text-muted-foreground">No avatars found</p>
             )}
           </div>
         </div>
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  try {
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/avatars`,
+    );
+    const data = res.data;
+    if (!data) {
+      return {
+        props: {
+          avatars: [],
+        },
+      };
+    }
+    return {
+      props: {
+        avatars: data,
+      },
+    };
+  } catch (err) {
+    return {
+      props: {
+        avatars: [],
+      },
+    };
+  }
 }

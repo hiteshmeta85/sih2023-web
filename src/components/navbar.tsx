@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "@/components/logo";
 import Link from "next/link";
+import { ModeToggle } from "./theme-toggle";
 
 const Navbar = ({ children }: { children?: React.ReactNode }) => {
   return (
@@ -9,7 +10,10 @@ const Navbar = ({ children }: { children?: React.ReactNode }) => {
         <Link href={"/"}>
           <Logo />
         </Link>
-        {children}
+        <div className="flex gap-4">
+          {children}
+          <ModeToggle />
+        </div>
       </nav>
       <hr />
     </>

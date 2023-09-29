@@ -1,10 +1,41 @@
 import { Button } from "@/components/ui/button";
 import { ArrowLeftIcon, RocketIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
-import { PromptInput } from "@/components/prompt-input";
+import { PromptFormSchema, PromptInput } from "@/components/prompt-input";
+import * as z from "zod";
+import axios from "axios";
+import { toast } from "@/components/ui/use-toast";
+import DisclaimerCard from "@/components/disclaimer-card";
 
 export default function GenerateAvatar() {
   const router = useRouter();
+
+  async function onSubmit(data: z.infer<typeof PromptFormSchema>) {
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_ML_URL}/generate-image`,
+        {
+          prompt: data.prompt,
+        },
+      );
+      if (res) {
+        // res: data: {
+        //   img_link
+        // }
+        localStorage.setItem(
+          "avatar-creation-data",
+          JSON.stringify(res.data.data),
+        );
+        await router.push(`/video-generation/update-avatar`);
+      }
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Uh oh!, Something went wrong.",
+        description: "There was a problem with your request.",
+      });
+    }
+  }
 
   return (
     <div className="container flex min-h-screen max-w-screen-md flex-col items-center justify-center p-4">
@@ -31,8 +62,12 @@ export default function GenerateAvatar() {
           </Button>
         </div>
 
-        <div className="mt-10">
-          <PromptInput placeholder={"Generate an avatar that looks like ..."} />
+        <div className="mt-10 space-y-2">
+          <PromptInput
+            placeholder={"Generate an avatar that looks like ..."}
+            onSubmit={onSubmit}
+          />
+          <DisclaimerCard />
         </div>
       </div>
     </div>

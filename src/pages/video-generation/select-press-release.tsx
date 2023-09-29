@@ -1,15 +1,16 @@
-import { DURATION_OPTIONS } from "@/constants";
+import { PRESS_RELEASE_DATA } from "@/constants";
 import { useRouter } from "next/router";
+import { Link2Icon } from "@radix-ui/react-icons";
 
-export default function SelectDuration() {
+export default function SelectPressRelease() {
   const router = useRouter();
 
-  const selectDuration = async (duration: number) => {
+  const handleLanguageSelect = async (link: string) => {
     if (localStorage.getItem("video-creation-data") !== null) {
       const data = JSON.parse(localStorage.getItem("video-creation-data")!);
-      data.duration = duration;
+      data.prompt = link;
       localStorage.setItem("video-creation-data", JSON.stringify(data));
-      await router.push("/video-generation/select-avatar");
+      await router.push("/video-generation/select-language");
     } else {
       await router.push("/video-generation");
     }
@@ -21,10 +22,10 @@ export default function SelectDuration() {
         <div className="space-y-4">
           <div className="flex items-center gap-2">
             <p className="flex h-20 w-20 items-center justify-center rounded-full bg-primary-foreground text-4xl">
-              3.
+              1.
             </p>
             <h2 className="text-4xl tracking-wider text-yellow-400">
-              Select Duration
+              Select Press Release
             </h2>
           </div>
           <p className="text-sm tracking-wide text-muted-foreground">
@@ -34,14 +35,23 @@ export default function SelectDuration() {
           </p>
         </div>
 
-        <div className="mt-10 grid grid-cols-3 gap-4">
-          {DURATION_OPTIONS.map((duration) => (
-            <div
-              key={duration.value}
-              onClick={() => selectDuration(duration.value)}
-              className="relative flex transform cursor-pointer flex-col items-center justify-center space-y-2 rounded-xl border-2 p-10 transition-all duration-300 hover:bg-primary-foreground"
-            >
-              {duration.label}
+        <div className="mt-10 grid gap-2">
+          {PRESS_RELEASE_DATA.map((release) => (
+            <div key={release.id} className="flex items-center gap-2">
+              <div
+                onClick={() => handleLanguageSelect(release.link)}
+                className="relative flex flex-1 transform cursor-pointer flex-col items-center justify-center space-y-2 rounded-xl border-2 px-8 py-4 transition-all duration-300 hover:bg-primary-foreground"
+              >
+                {release.title}
+              </div>
+              <a
+                href={release.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transform rounded-lg border-2 p-2 transition-all duration-300 hover:bg-primary-foreground"
+              >
+                <Link2Icon className="h-6 w-6" />
+              </a>
             </div>
           ))}
         </div>
