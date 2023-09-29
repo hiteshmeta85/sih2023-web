@@ -37,7 +37,7 @@ export default function Avatars({ avatars, message }: PageIP) {
       </Navbar>
       <div className="container px-4 py-10">
         <div className="space-y-4">
-          <h2 className="text-4xl tracking-wider text-yellow-400">
+          <h2 className="text-2xl tracking-wider text-yellow-400 md:text-4xl">
             AI-Generated Avatars Showcase
           </h2>
           <p className="text-sm tracking-wide text-muted-foreground">

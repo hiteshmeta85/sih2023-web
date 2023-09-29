@@ -2,6 +2,7 @@ import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import {
+  ArrowDownIcon,
   FileTextIcon,
   GitHubLogoIcon,
   KeyboardIcon,
@@ -18,6 +19,7 @@ import { useRouter } from "next/router";
 import * as z from "zod";
 import DisclaimerCard from "@/components/disclaimer-card";
 import { DEVELOPER_SECTION_DATA, IMAGE_GALLERY_DATA } from "@/constants";
+import { scrollToId } from "@/lib/utils";
 
 export default function Home() {
   const router = useRouter();
@@ -122,6 +124,16 @@ export default function Home() {
               onSubmit={onSubmit}
             />
             <DisclaimerCard />
+            <Button
+              size="sm"
+              variant="default"
+              onClick={() => scrollToId("video-generation-flow-gallery")}
+            >
+              <>
+                View Video Generation Flow{" "}
+                <ArrowDownIcon className="ml-2 animate-bounce" />
+              </>
+            </Button>
           </div>
         </div>
 
@@ -179,7 +191,10 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="container mx-auto grid space-y-8 pb-24 text-justify">
+      <div
+        id="video-generation-flow-gallery"
+        className="container mx-auto grid space-y-8 pb-24 text-justify"
+      >
         <p className="text-center text-2xl font-bold md:text-3xl md:leading-[3rem]">
           <span className="text-orange-500">Video</span> Generation Flow
         </p>
