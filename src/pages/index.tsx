@@ -17,7 +17,6 @@ import AvatarsShowcase from "@/components/avatars-showcase";
 import { useRouter } from "next/router";
 import * as z from "zod";
 import DisclaimerCard from "@/components/disclaimer-card";
-import Link from "next/link";
 import { DEVELOPER_SECTION_DATA, IMAGE_GALLERY_DATA } from "@/constants";
 
 export default function Home() {
@@ -189,12 +188,15 @@ export default function Home() {
 
       <div className="container mx-auto grid space-y-8 pb-24 text-justify">
         <p className="text-center text-2xl font-bold md:text-3xl md:leading-[3rem]">
-          <span className="text-orange-500">News</span> in Pictures
+          <span className="text-orange-500">Video</span> Generation Flow
         </p>
         <div className="mx-auto grid max-w-screen-md gap-6">
           {IMAGE_GALLERY_DATA.map((image) => {
             return (
-              <div className="items-center gap-4 md:flex" key={image.id}>
+              <div
+                className="flex flex-col items-center gap-2 md:flex-row md:items-start"
+                key={image.id}
+              >
                 <Image
                   src={image.image}
                   alt=""
@@ -202,9 +204,7 @@ export default function Home() {
                   height={400}
                   className="rounded-xl border p-2"
                 />
-                <div>
-                  <p className="text-lg font-semibold">{image.title}</p>
-                </div>
+                <p className="text-sm">{image.title}</p>
               </div>
             );
           })}
@@ -213,21 +213,20 @@ export default function Home() {
 
       <div className="container mx-auto grid space-y-8 pb-24 text-center">
         <p className="text-2xl font-bold md:text-3xl md:leading-[3rem]">
-          <span className="text-indigo-500">Developers</span> Section
+          Our <span className="text-indigo-500">Team</span> of Developers
         </p>
         <div className="mx-auto grid max-w-screen-md gap-4 md:grid-cols-2">
           {DEVELOPER_SECTION_DATA.map((data) => {
             return (
-              <div className="flex gap-4 rounded-xl border p-4" key={data.id}>
-                <div className="text-left">
-                  <p className="font-semibold">{data.name}</p>
-                  <p className="text-muted-foreground">{data.designation}</p>
-                  <div className="">
-                    <Link href={data.github_url}>
-                      <GitHubLogoIcon width={25} height={25} />
-                    </Link>
-                  </div>
-                </div>
+              <div
+                className="flex flex-col gap-1 rounded-xl border p-4 text-left"
+                key={data.id}
+              >
+                <p className="font-semibold">{data.name}</p>
+                <p className="text-muted-foreground">{data.designation}</p>
+                <a href={data.github_url} className="w-fit">
+                  <GitHubLogoIcon width={25} height={25} />
+                </a>
               </div>
             );
           })}
