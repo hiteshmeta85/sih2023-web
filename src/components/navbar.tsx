@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "@/components/logo";
 import Link from "next/link";
 import Image from "next/legacy/image";
+import { ModeToggle } from "@/components/mode-toggle";
 
 const Navbar = ({ children }: { children?: React.ReactNode }) => {
   return (
@@ -22,7 +23,10 @@ const Navbar = ({ children }: { children?: React.ReactNode }) => {
             />
           </div>
         </div>
-        {children}
+        <div className="flex gap-4">
+          {children}
+          <ModeToggle />
+        </div>
       </nav>
       <hr />
     </>

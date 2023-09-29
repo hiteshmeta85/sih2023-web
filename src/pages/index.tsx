@@ -3,6 +3,7 @@ import Navbar from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import {
   FileTextIcon,
+  GitHubLogoIcon,
   KeyboardIcon,
   LetterCaseCapitalizeIcon,
   PersonIcon,
@@ -16,6 +17,7 @@ import AvatarsShowcase from "@/components/avatars-showcase";
 import { useRouter } from "next/router";
 import * as z from "zod";
 import DisclaimerCard from "@/components/disclaimer-card";
+import { DEVELOPER_SECTION_DATA, IMAGE_GALLERY_DATA } from "@/constants";
 
 export default function Home() {
   const router = useRouter();
@@ -174,6 +176,55 @@ export default function Home() {
               "/images/avatar_5.png",
             ]}
           />
+        </div>
+      </div>
+
+      <div className="container mx-auto grid space-y-8 pb-24 text-justify">
+        <p className="text-center text-2xl font-bold md:text-3xl md:leading-[3rem]">
+          <span className="text-orange-500">Video</span> Generation Flow
+        </p>
+        <div className="mx-auto grid max-w-screen-md gap-6">
+          {IMAGE_GALLERY_DATA.map((image) => {
+            return (
+              <div
+                className="flex flex-col items-center gap-2 md:flex-row md:items-start"
+                key={image.id}
+              >
+                <Image
+                  src={image.image}
+                  alt=""
+                  width={400}
+                  height={400}
+                  className="rounded-xl border p-2"
+                />
+                <p className="text-sm">{image.title}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="container mx-auto grid space-y-8 pb-24 text-center">
+        <p className="text-2xl font-bold md:text-3xl md:leading-[3rem]">
+          Our <span className="text-indigo-500">Team</span> of Developers
+        </p>
+        <div className="mx-auto grid max-w-screen-md gap-4 md:grid-cols-2">
+          {DEVELOPER_SECTION_DATA.map((data) => {
+            return (
+              <div
+                className="flex flex-col gap-1 rounded-xl border p-4 text-left"
+                key={data.id}
+              >
+                <p className="font-semibold">{data.name}</p>
+                <p className="text-sm text-muted-foreground">
+                  {data.designation}
+                </p>
+                <a href={data.github_url} className="w-fit">
+                  <GitHubLogoIcon className="h-6 w-6" />
+                </a>
+              </div>
+            );
+          })}
         </div>
       </div>
 
