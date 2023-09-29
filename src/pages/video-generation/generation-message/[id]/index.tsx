@@ -59,7 +59,7 @@ export default function GenerationMessage() {
         <div>
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <h2 className="inline-flex items-end gap-6 text-4xl tracking-wider text-green-500">
+              <h2 className="inline-flex items-end gap-6 text-2xl tracking-wider text-green-500 md:text-4xl">
                 Video Generation{" "}
                 {videoStatus === "Completed" ? "Completed" : "in Progress"}
                 <div className="dot-elastic mb-2" />

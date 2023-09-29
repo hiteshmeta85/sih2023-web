@@ -28,10 +28,10 @@ const VideoGeneration = () => {
       <div className="container flex min-h-screen flex-col justify-center p-4">
         <div className="space-y-12">
           <div className="text-center">
-            <h1 className="text-8xl font-semibold leading-[9rem]">
+            <h1 className="text-4xl font-semibold md:text-8xl md:leading-[9rem]">
               Press Release to Video
             </h1>
-            <h2 className="text-4xl tracking-wider text-yellow-400">
+            <h2 className="text-2xl tracking-wider text-yellow-400 md:text-4xl">
               Transforming Text into Engaging Visuals
             </h2>
           </div>

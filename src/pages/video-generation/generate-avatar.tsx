@@ -47,7 +47,7 @@ export default function GenerateAvatar() {
               <p className="flex h-20 w-20 items-center justify-center rounded-full bg-primary-foreground text-4xl">
                 <RocketIcon className="h-6 w-6" />
               </p>
-              <h2 className="text-4xl tracking-wider text-violet-500">
+              <h2 className="text-2xl tracking-wider text-violet-500 md:text-4xl">
                 Generate Avatar
               </h2>
             </div>

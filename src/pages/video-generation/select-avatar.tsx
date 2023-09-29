@@ -63,7 +63,7 @@ export default function SelectAvatar({ avatars }: PageIP) {
               <p className="flex h-20 w-20 items-center justify-center rounded-full bg-primary-foreground text-4xl">
                 4.
               </p>
-              <h2 className="text-4xl tracking-wider text-yellow-400">
+              <h2 className="text-2xl tracking-wider text-yellow-400 md:text-4xl">
                 Select Avatar
               </h2>
             </div>
@@ -85,7 +85,7 @@ export default function SelectAvatar({ avatars }: PageIP) {
           </div>
 
           <div className="mt-10 space-y-4">
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               {avatars.map((avatar) => {
                 return (
                   <Button
@@ -105,14 +105,13 @@ export default function SelectAvatar({ avatars }: PageIP) {
             <div>
               {avatars && avatars.length > 0 ? (
                 currentAvatar && (
-                  <div className="flex gap-4">
+                  <div className="flex flex-col gap-4 md:flex-row">
                     <Image
                       src={currentAvatar.image}
                       alt={currentAvatar.nickname}
                       width={400}
                       height={400}
-                      layout={"fixed"}
-                      className="h-[400px] w-[400px] min-w-[400px] rounded-xl object-cover"
+                      className="h-[400px] w-[400px] rounded-xl bg-muted object-contain md:min-w-[400px]"
                     />
                     <div>
                       <p className="text-2xl font-bold">

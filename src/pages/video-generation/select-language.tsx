@@ -25,7 +25,7 @@ export default function SelectLanguage() {
               <p className="flex h-20 w-20 items-center justify-center rounded-full bg-primary-foreground text-4xl">
                 2.
               </p>
-              <h2 className="text-4xl tracking-wider text-yellow-400">
+              <h2 className="text-2xl tracking-wider text-yellow-400 md:text-4xl">
                 Select Language
               </h2>
             </div>
@@ -36,12 +36,12 @@ export default function SelectLanguage() {
             </p>
           </div>
 
-          <div className="mt-10 grid grid-cols-5 gap-4">
+          <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-5">
             {LANGUAGES.map((language) => (
               <div
                 key={language.value}
                 onClick={() => handleLanguageSelect(language.value)}
-                className="relative flex transform cursor-pointer flex-col items-center justify-center space-y-2 rounded-xl border-2 p-10 transition-all duration-300 hover:bg-primary-foreground"
+                className="relative flex transform cursor-pointer flex-col items-center justify-center space-y-2 rounded-xl border-2 p-5 transition-all duration-300 hover:bg-primary-foreground md:p-10"
               >
                 {language.label}
               </div>

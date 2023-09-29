@@ -59,7 +59,7 @@ export default function EditScript({ videoData, id }: PageIP) {
               <p className="flex h-20 w-20 items-center justify-center rounded-full bg-primary-foreground text-4xl">
                 5.
               </p>
-              <h2 className="text-4xl tracking-wider text-yellow-400">
+              <h2 className="text-2xl tracking-wider text-yellow-400 md:text-4xl">
                 Edit Script
               </h2>
             </div>

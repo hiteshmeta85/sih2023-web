@@ -26,7 +26,7 @@ export default function SelectPressRelease() {
               <p className="flex h-20 w-20 items-center justify-center rounded-full bg-primary-foreground text-4xl">
                 1.
               </p>
-              <h2 className="text-4xl tracking-wider text-yellow-400">
+              <h2 className="text-2xl tracking-wider text-yellow-400 md:text-4xl">
                 Select Press Release
               </h2>
             </div>
@@ -42,7 +42,7 @@ export default function SelectPressRelease() {
               <div key={release.id} className="flex items-center gap-2">
                 <div
                   onClick={() => handleLanguageSelect(release.link)}
-                  className="relative flex flex-1 transform cursor-pointer flex-col items-center justify-center space-y-2 rounded-xl border-2 px-8 py-4 transition-all duration-300 hover:bg-primary-foreground"
+                  className="relative flex flex-1 transform cursor-pointer flex-col items-center justify-center space-y-2 rounded-xl border-2 px-4 py-4 text-sm transition-all duration-300 hover:bg-primary-foreground md:px-8 md:text-base"
                 >
                   {release.title}
                 </div>

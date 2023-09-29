@@ -7,7 +7,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 const Navbar = ({ children }: { children?: React.ReactNode }) => {
   return (
     <>
-      <nav className="container mx-auto flex flex-wrap items-center justify-between gap-4 px-4 py-1">
+      <nav className="container mx-auto flex flex-wrap items-center justify-between gap-4 px-4 py-2">
         <div className="flex items-center gap-4">
           <Link href={"/"}>
             <Logo />
@@ -23,7 +23,7 @@ const Navbar = ({ children }: { children?: React.ReactNode }) => {
             />
           </div>
         </div>
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-4">
           {children}
           <ModeToggle />
         </div>

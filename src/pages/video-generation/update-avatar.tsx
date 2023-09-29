@@ -54,7 +54,7 @@ export default function UpdateAvatar() {
         },
       );
       if (res.data) {
-        await router.push(`/video-generation/select-avatar`);
+        // await router.push(`/video-generation/select-avatar`);
       }
     } catch (err) {
       toast({
@@ -74,7 +74,7 @@ export default function UpdateAvatar() {
               <p className="flex h-20 w-20 items-center justify-center rounded-full bg-primary-foreground text-4xl">
                 <StarFilledIcon className="h-6 w-6" />
               </p>
-              <h2 className="text-4xl tracking-wider text-violet-500">
+              <h2 className="text-2xl tracking-wider text-violet-500 md:text-4xl">
                 Update Avatar
               </h2>
             </div>
@@ -99,7 +99,7 @@ export default function UpdateAvatar() {
             {isLoading ? (
               <p className="text-muted-foreground">Loading...</p>
             ) : avatarInfo !== null ? (
-              <div className="flex gap-4">
+              <div className="flex flex-col gap-4 md:flex-row">
                 <div className="space-y-2">
                   <Image
                     src={avatarInfo.img_link}

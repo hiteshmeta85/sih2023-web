@@ -12,7 +12,7 @@ export default function VideoGenerationPageLayout({ children }: PageIP) {
 
   return (
     <div className="relative">
-      <div className="absolute left-4 top-4">
+      <div className="left-4 top-4 p-4 md:absolute md:p-0">
         <Button variant="outline" onClick={() => router.push("/")}>
           <>
             <ArrowLeftIcon className="mr-2" />
