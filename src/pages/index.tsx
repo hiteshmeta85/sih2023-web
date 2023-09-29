@@ -111,7 +111,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mx-auto max-w-screen-md space-y-12 rounded-3xl bg-muted p-16">
+        <div className="mx-auto max-w-screen-md space-y-12 rounded-3xl bg-muted p-4 md:p-16">
           <p className="text-2xl font-bold md:text-3xl md:leading-[3rem]">
             <span className="text-cyan-500">Start your journey!</span> Ask the
             AI to Design
@@ -197,7 +197,7 @@ export default function Home() {
                   height={400}
                   className="rounded-xl border p-2"
                 />
-                <p className="text-sm">{image.title}</p>
+                <p className="text-left text-sm tracking-wide">{image.title}</p>
               </div>
             );
           })}
@@ -208,7 +208,7 @@ export default function Home() {
         <p className="text-2xl font-bold md:text-3xl md:leading-[3rem]">
           Our <span className="text-indigo-500">Team</span> of Developers
         </p>
-        <div className="mx-auto grid max-w-screen-md gap-4 md:grid-cols-2">
+        <div className="mx-auto grid w-full max-w-screen-md gap-4 md:grid-cols-2">
           {DEVELOPER_SECTION_DATA.map((data) => {
             return (
               <div
@@ -219,7 +219,12 @@ export default function Home() {
                 <p className="text-sm text-muted-foreground">
                   {data.designation}
                 </p>
-                <a href={data.github_url} className="w-fit">
+                <a
+                  href={data.github_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-fit"
+                >
                   <GitHubLogoIcon className="h-6 w-6" />
                 </a>
               </div>

@@ -30,9 +30,9 @@ export function PromptInput({
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="mx-auto max-w-screen-md transform rounded-3xl bg-primary/30 p-3 transition-all duration-300 focus-within:bg-gradient-to-r focus-within:from-violet-500 focus-within:to-blue-500">
-          <div className="flex items-center gap-2 rounded-2xl bg-primary p-4">
-            <div className="inline-flex h-10 items-center justify-center rounded-full bg-violet-500 px-8 text-sm">
+        <div className="mx-auto max-w-screen-md transform rounded-3xl bg-primary/30 transition-all duration-300 focus-within:bg-gradient-to-r focus-within:from-violet-500 focus-within:to-blue-500 md:p-3">
+          <div className="flex items-center gap-2 rounded-2xl bg-primary p-2 md:p-4">
+            <div className="hidden h-10 items-center justify-center rounded-full bg-violet-500 px-8 text-sm md:inline-flex">
               Generate:
             </div>
             <FormField
@@ -43,7 +43,7 @@ export function PromptInput({
                   <FormControl>
                     <Input
                       placeholder={placeholder}
-                      className="w-full flex-1 border-none bg-primary text-lg text-background shadow-none focus-visible:ring-0 focus-visible:ring-primary focus-visible:ring-offset-0"
+                      className="w-full flex-1 border-none bg-primary px-1 text-sm text-background shadow-none focus-visible:ring-0 focus-visible:ring-primary focus-visible:ring-offset-0 md:px-3 md:text-lg"
                       autoComplete="off"
                       {...field}
                     />
