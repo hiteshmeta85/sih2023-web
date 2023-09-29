@@ -21,10 +21,23 @@ export default function VideoCard({
       </div>
       <div className="flex flex-1 flex-col justify-between space-y-8 p-4">
         <div className="space-y-2">
-          <Link href={`/videos/${id}`} className="font-medium hover:underline">
-            {title}
-          </Link>
+          <div>
+            <Link
+              href={`/videos/${id}`}
+              className="font-medium hover:underline"
+            >
+              {title}
+            </Link>
+          </div>
           <p className="text-xs text-muted-foreground">{description}</p>
+          <div>
+            <Link
+              href={`/videos/${id}`}
+              className="transform text-xs text-muted-foreground underline transition-all duration-300 hover:text-primary hover:underline"
+            >
+              View
+            </Link>
+          </div>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <div className="inline-flex items-center justify-center rounded-md bg-primary px-2 py-1 text-xs capitalize text-background ring-1 ring-primary">
