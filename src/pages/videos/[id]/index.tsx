@@ -8,6 +8,8 @@ import axios from "axios";
 import { VideoIP } from "@/types";
 import { GetServerSidePropsContext } from "next";
 import { Fragment } from "react";
+import { DownloadIcon, Share1Icon } from "@radix-ui/react-icons";
+import { ShareDialog } from "@/components/share-dialog";
 
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
@@ -35,7 +37,7 @@ export default function IndividualVideo({ videoData }: PageIP) {
           <p className="text-sm tracking-wide text-muted-foreground first-letter:uppercase">
             {videoData.description}
           </p>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <p className="inline-flex h-9 items-center justify-center rounded-md border border-input bg-transparent px-4 py-2 text-sm font-medium capitalize shadow-sm">
               {videoData.language}
             </p>
@@ -46,6 +48,10 @@ export default function IndividualVideo({ videoData }: PageIP) {
                 year: "numeric",
               })}
             </p>
+            <ShareDialog title={videoData.title} />
+            <Button variant="outline">
+              Download <DownloadIcon className="ml-2" />
+            </Button>
           </div>
         </div>
         <div className="mt-10 space-y-6">

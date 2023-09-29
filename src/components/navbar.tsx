@@ -18,6 +18,7 @@ const Navbar = ({ children }: { children?: React.ReactNode }) => {
               alt="logo"
               width={100}
               height={56}
+              objectFit="contain"
             />
           </div>
         </div>

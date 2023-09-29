@@ -53,7 +53,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 1. [Next.js](https://nextjs.org/)
 2. [TypeScript](https://www.typescriptlang.org/)
 3. [Tailwind CSS](https://tailwindcss.com/)
-4. [Shadcn/ui](https://ui.shadcn.com/)
+4. [Shadcn UI](https://ui.shadcn.com/)
 5. [Radix UI](https://www.radix-ui.com/)
 6. [React-Hook-Form](https://react-hook-form.com/)
 7. [Zod](https://zod.dev/)
