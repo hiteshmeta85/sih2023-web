@@ -212,7 +212,14 @@ export default function Home() {
                   height={400}
                   className="rounded-xl border p-2"
                 />
-                <p className="text-left text-sm tracking-wide">{image.title}</p>
+                <div className="flex flex-col gap-2 text-justify">
+                  <p className="text-left text-base tracking-wide">
+                    {image.title}
+                  </p>
+                  <p className="text-left text-sm text-muted-foreground">
+                    {image.description}
+                  </p>
+                </div>
               </div>
             );
           })}

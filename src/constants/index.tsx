@@ -323,80 +323,80 @@ export const IMAGE_GALLERY_DATA = [
   {
     id: 1,
     title:
-      "Video Generation Prompt Page (Prompt-Based): Begin the video creation journey by providing the press release link or by providing a prompt.",
+      "Video Generation Prompt Page (Prompt-Based)",
     description:
-      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      "Begin the video creation journey by providing the press release link or by providing a prompt",
     image: "/sample/video-generation-prompt-page.png",
   },
   {
     id: 2,
     title:
-      "Select Press Release Page: Choose from a list of recent press releases directly sourced from the official PIB (Press Information Bureau) website.",
+      "Select Press Release Page",
     description:
-      "The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.",
+      "Choose from a list of recent press releases directly sourced from the official PIB (Press Information Bureau) website",
     image: "/sample/select-press-release-link-page.png",
   },
   {
     id: 3,
     title:
-      "Choose the language for your video's narration and dialogue, ensuring it suits your target audience.",
+      "Language Selection Page",
     description:
-      "It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. ",
+      "Choose the language for your video's narration and dialogue, ensuring it suits your target audience",
     image: "/sample/select-language-page.png",
   },
   {
     id: 4,
     title:
-      "Duration Selection Page: Select the desired duration for your video. The video will be generated accordingly.",
+      "Duration Selection Page",
     description:
-      "It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. ",
+      "Select the desired duration for your video. The video will be generated accordingly",
     image: "/sample/select-duration-page.png",
   },
   {
     id: 5,
     title:
-      "Avatar Selection Page: Pick from a range of avatars to represent narrators/anchors in your video. You can also choose to generate a new avatar.",
+      "Avatar Selection Page",
     description:
-      "It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. ",
+      "Pick from a range of avatars to represent narrators/anchors in your video. You can also choose to generate a new avatar",
     image: "/sample/select-avatar-page.png",
   },
   {
     id: 7,
     title:
-      "Generate Avatar Page (Prompt-Based): Shape your AI presenter character (Avatar) by providing a specific prompt. ",
+      "Generate Avatar Page (Prompt-Based)",
     description:
-      "It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. ",
+      "Shape your AI presenter character (Avatar) by providing a specific prompt",
     image: "/sample/avatar-generation-prompt-page.png",
   },
   {
     id: 6,
     title:
-      "Update Avatar Page: Personalize your AI presenter by giving them a name and choosing their voice, either male or female. Additionally, provide a detailed description to define the persona and character of your presenter.",
+      "Update Avatar Page",
     description:
-      "It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. ",
+      "Personalize your AI presenter by giving them a name and choosing their voice, either male or female. Additionally, provide a detailed description to define the persona and character of your presenter",
     image: "/sample/edit-avatar-page.png",
   },
   {
     id: 8,
-    title: "Edit Script Page: Refine and edit the AI generated video's script.",
+    title: "Edit Script Page",
     description:
-      "It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. ",
+      "Refine and edit the AI generated video's script",
     image: "/sample/edit-script-page.png",
   },
   {
     id: 9,
     title:
-      "Generation Message Page: Get updates on the video generation progress. Get notified when the video is ready.",
+      "Generation Message Page",
     description:
-      "It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. ",
+      "Get updates on the video generation progress. Get notified when the video is ready",
     image: "/sample/generation-message-page.png",
   },
   {
     id: 10,
     title:
-      "Final Video Output with Script: View the completed video, along with the script and information about the selected avatars (AI presenters), video clips and images used.",
+      "Final Video Output with Script",
     description:
-      "It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Additionally, you can download the video and share it on social media.",
+      "View the completed video, along with the script and information about the selected avatars (AI presenters), video clips and images used",
     image: "/sample/individual-video-page.png",
   },
 ];
