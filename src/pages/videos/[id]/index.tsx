@@ -1,4 +1,3 @@
-import { AVATAR_OPTIONS } from "@/constants";
 import AvatarCard from "@/components/avatar-card";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/navbar";
@@ -8,7 +7,7 @@ import axios from "axios";
 import { VideoIP } from "@/types";
 import { GetServerSidePropsContext } from "next";
 import { Fragment } from "react";
-import { DownloadIcon, Share1Icon } from "@radix-ui/react-icons";
+import { DownloadIcon } from "@radix-ui/react-icons";
 import { ShareDialog } from "@/components/share-dialog";
 
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
